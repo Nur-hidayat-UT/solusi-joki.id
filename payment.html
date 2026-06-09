@@ -70,7 +70,8 @@
           <span class="material-symbols-outlined text-[22px]">dark_mode</span>
         </button>
         <a href="index.html"
-          class="hidden md:flex items-center gap-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-trust-navy dark:text-paper-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-lg transition-all">
+          class="hidden md:flex items-center gap-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-trust-navy dark:text-paper-white font-semibold text-sm px-5 py-2.5 rounded-full transition-all"
+          title="Kembali">
           <span class="material-symbols-outlined text-[18px]">arrow_back</span>
           Kembali
         </a>
@@ -175,7 +176,7 @@
                           <input type="text" value="083153145931" readonly
                             class="flex-1 bg-paper-white dark:bg-[#0f1820] border border-slate-200 dark:border-slate-600 rounded-lg px-3 py-2 font-semibold text-slate-800 dark:text-slate-200 text-sm"
                             id="dana-number" />
-                          <button onclick="copyToClipboard('dana-number')"
+                          <button onclick="copyToClipboard(event, 'dana-number')"
                             class="bg-success-emerald hover:bg-accent-emerald-dark text-white px-3 py-2 rounded-lg transition-all flex items-center justify-center"
                             title="Salin Nomor">
                             <span class="material-symbols-outlined text-[18px]">content_copy</span>
@@ -221,7 +222,7 @@
                             <input type="text" value="4782456127945" readonly
                               class="flex-1 bg-paper-white dark:bg-[#0f1820] border border-slate-200 dark:border-slate-600 rounded-lg px-3 py-2 font-semibold text-slate-800 dark:text-slate-200 text-sm"
                               id="bri-number" />
-                            <button onclick="copyToClipboard('bri-number')"
+                            <button onclick="copyToClipboard(event, 'bri-number')"
                               class="bg-success-emerald hover:bg-accent-emerald-dark text-white px-3 py-2 rounded-lg transition-all flex items-center justify-center"
                               title="Salin Nomor">
                               <span class="material-symbols-outlined text-[18px]">content_copy</span>
@@ -302,14 +303,15 @@
 
               <!-- Action Button -->
               <button onclick="confirmOrder()"
-                class="w-full py-4 bg-success-emerald hover:bg-accent-emerald-dark disabled:bg-slate-400 disabled:cursor-not-allowed text-paper-white font-bold rounded-2xl transition-all flex items-center justify-center gap-2 shadow-lg"
+                class="w-full py-4 bg-success-emerald hover:bg-accent-emerald-dark disabled:bg-slate-400 disabled:cursor-not-allowed text-paper-white font-bold rounded-2xl transition-all flex items-center justify-center gap-2"
                 id="confirm-btn" disabled>
                 <span class="material-symbols-outlined text-[20px]">check_circle</span>
                 Lanjut ke Pembayaran
               </button>
 
               <a href="index.html"
-                class="w-full mt-3 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-trust-navy dark:text-paper-white font-semibold rounded-xl transition-all flex items-center justify-center gap-2 text-sm">
+                class="w-full mt-3 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-trust-navy dark:text-paper-white font-semibold rounded-xl transition-all flex items-center justify-center gap-2"
+                title="Batalkan pesanan">
                 <span class="material-symbols-outlined text-[18px]">close</span>
                 Batalkan
               </a>
@@ -534,13 +536,15 @@ Mohon konfirmasi dan panduan pembayaran selanjutnya. Terima kasih!`;
       window.open(whatsappLink, '_blank');
     }
 
-    // Copy to Clipboard Function
-    function copyToClipboard(elementId) {
+    // Copy to Clipboard Function - DIPERBAIKI
+    function copyToClipboard(evt, elementId) {
       const element = document.getElementById(elementId);
+      if (!element) return;
+      
       const text = element.value;
+      const button = evt.currentTarget; // Gunakan evt.currentTarget untuk mendapatkan button yang di-klik
 
       navigator.clipboard.writeText(text).then(() => {
-        const button = event.target.closest('button');
         const originalHTML = button.innerHTML;
         button.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span>';
         button.classList.add('bg-green-600');
