@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
  * 3. Manajemen Tema (Light / Dark Mode)
  */
 function initThemeToggle() {
-  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeToggleBtn = document.querySelector('.theme-toggle');
   if (!themeToggleBtn) return;
 
   if (localStorage.getItem('color-theme') === 'dark' ||
