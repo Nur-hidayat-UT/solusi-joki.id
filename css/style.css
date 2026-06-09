@@ -1,0 +1,122 @@
+/* Style variables and custom utilities */
+:root {
+  --primary-navy: #0A192F;
+  --success-emerald: #10B981;
+  --slate-gray: #475569;
+  --paper-white: #FFFFFF;
+  --soft-grey: #F8FAFC;
+  --transition-speed: 0.3s;
+}
+
+/* Base styles and defaults */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--soft-grey);
+  color: var(--primary-navy);
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Sleek Dark Mode Transitions */
+.dark body {
+  background-color: #0b1524;
+  color: #f8fafc;
+}
+
+.transition-colors-all {
+  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ambient Shadow */
+.ambient-shadow {
+  box-shadow: 0 20px 40px -15px rgba(10, 25, 47, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ambient-shadow:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -12px rgba(10, 25, 47, 0.08);
+}
+
+.dark .ambient-shadow {
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+}
+
+.dark .ambient-shadow:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+}
+
+/* Glassmorphism Card styling */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Accordion transition utility */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+}
+
+.accordion-content.open {
+  max-height: 1000px;
+  transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
+}
+
+/* Dynamic floating widget animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.float-animation {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Mobile Nav Drawer animation */
+.mobile-nav-drawer {
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-drawer.open {
+  transform: translateX(0);
+}

@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="description"
+    content="SolusiJoki.id - Jasa pengerjaan tugas kuliah & sekolah profesional, terpercaya, cepat, bebas plagiasi (Makalah, Esai, Resume Buku, Jurnal) dengan garansi Turnitin." />
+  <meta name="keywords"
+    content="jasa joki tugas, joki makalah, joki esai, joki resume buku, joki tugas kuliah, joki terpercaya, turnitin" />
+  <meta name="author" content="SolusiJoki.id" />
+  <meta property="og:title" content="SolusiJoki.id - Solusi Akademik Profesional & Terpercaya" />
+  <meta property="og:description"
+    content="Pengerjaan tugas kuliah cepat, tepat waktu & bebas plagiasi dengan standar kualitas tinggi." />
+  <meta property="og:type" content="website" />
+
+  <title>SolusiJoki.id - Solusi Akademik Profesional & Terpercaya</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet" />
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "trust-navy": "#0A192F",
+            "success-emerald": "#10B981",
+            "slate-gray": "#475569",
+            "paper-white": "#FFFFFF",
+            "soft-grey": "#F8FAFC",
+            "accent-emerald-dark": "#059669",
+            "navy-light": "#172A45"
+          },
+          borderRadius: {
+            "sm": "0.125rem",
+            "DEFAULT": "0.25rem",
+            "md": "0.375rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem"
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Style CSS sheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="overflow-x-hidden antialiased transition-colors-all">
+
+  <!-- Header Section -->
+  <header id="site-header"
+    class="sticky top-0 z-50 w-full bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-slate-200/50 dark:border-white/5 transition-all duration-300">
+    <nav class="flex justify-between items-center w-full px-6 md:px-12 py-4 max-w-7xl mx-auto">
+      <!-- Brand Logo -->
+      <a class="flex items-center gap-3 group" href="#">
+        <img alt="SolusiJoki.id Logo"
+          class="h-12 w-12 object-contain rounded-lg transition-transform group-hover:scale-110"
+          src="assets/img/Only-logo-removebg-preview.png" />
+        <div class="flex items-baseline gap-0.5 font-extrabold text-xl md:text-2xl tracking-tight leading-none">
+          <span class="text-trust-navy dark:text-paper-white">SolusiJoki</span>
+          <span class="text-success-emerald">.id</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a class="font-semibold text-sm text-slate-700 dark:text-slate-200 hover:text-success-emerald transition-colors"
+          href="#layanan-section">Layanan</a>
+        <a class="font-semibold text-sm text-slate-700 dark:text-slate-200 hover:text-success-emerald transition-colors"
+          href="#kalkulator-section">Estimasi Biaya</a>
+        <a class="font-semibold text-sm text-slate-700 dark:text-slate-200 hover:text-success-emerald transition-colors"
+          href="#cara-pesan-section">Cara Pesan</a>
+        <a class="font-semibold text-sm text-slate-700 dark:text-slate-200 hover:text-success-emerald transition-colors"
+          href="#portofolio-section">Testimoni</a>
+        <a class="font-semibold text-sm text-slate-700 dark:text-slate-200 hover:text-success-emerald transition-colors"
+          href="#faq-section">FAQ</a>
+      </div>
+
+      <!-- Navbar Right Actions -->
+      <div class="flex items-center gap-4">
+        <!-- Theme Toggle Button -->
+        <button
+          class="theme-toggle p-2 text-slate-600 dark:text-slate-300 hover:text-success-emerald transition-colors rounded-lg hover:bg-slate-500/10"
+          aria-label="Toggle Theme">
+          <span class="material-symbols-outlined text-[22px]">dark_mode</span>
+        </button>
+
+        <!-- Call-to-action (WhatsApp) -->
+        <button
+          class="wa-contact-trigger hidden md:flex items-center gap-2 bg-success-emerald hover:bg-accent-emerald-dark text-paper-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-lg shadow-success-emerald/10 scale-95 active:scale-90 transition-all duration-300">
+          <span class="material-symbols-outlined text-[18px]">chat</span>
+          Hubungi WhatsApp
+        </button>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button id="menu-btn"
+          class="md:hidden p-2 text-slate-700 dark:text-slate-300 hover:text-success-emerald transition-colors"
+          aria-label="Open Menu">
+          <span class="material-symbols-outlined text-[28px]">menu</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Navigation Drawer Overlay & Panel -->
+  <div id="mobile-nav-drawer"
+    class="mobile-nav-drawer fixed inset-y-0 right-0 z-50 w-full max-w-xs bg-trust-navy dark:bg-[#0d172a] shadow-2xl flex flex-col p-6 border-l border-white/5">
+    <div class="flex justify-between items-center mb-8">
+      <div class="flex items-center gap-2">
+        <img alt="SolusiJoki Logo" class="h-8 w-auto object-contain" src="assets/img/Only-logo-removebg-preview.png" />
+        <span class="font-bold text-lg text-paper-white">Menu</span>
+      </div>
+      <button id="close-menu-btn" class="p-2 text-paper-white/80 hover:text-success-emerald transition-colors"
+        aria-label="Close Menu">
+        <span class="material-symbols-outlined text-[28px]">close</span>
+      </button>
+    </div>
+    <div class="flex flex-col space-y-6">
+      <a class="mobile-nav-link text-lg text-paper-white/90 hover:text-success-emerald transition-colors font-medium border-b border-white/5 pb-2"
+        href="#layanan-section">Layanan</a>
+      <a class="mobile-nav-link text-lg text-paper-white/90 hover:text-success-emerald transition-colors font-medium border-b border-white/5 pb-2"
+        href="#kalkulator-section">Estimasi Biaya</a>
+      <a class="mobile-nav-link text-lg text-paper-white/90 hover:text-success-emerald transition-colors font-medium border-b border-white/5 pb-2"
+        href="#cara-pesan-section">Cara Pesan</a>
+      <a class="mobile-nav-link text-lg text-paper-white/90 hover:text-success-emerald transition-colors font-medium border-b border-white/5 pb-2"
+        href="#portofolio-section">Testimoni</a>
+      <a class="mobile-nav-link text-lg text-paper-white/90 hover:text-success-emerald transition-colors font-medium border-b border-white/5 pb-2"
+        href="#faq-section">FAQ</a>
+
+      <button
+        class="wa-contact-trigger flex items-center justify-center gap-2 bg-success-emerald hover:bg-accent-emerald-dark text-paper-white font-semibold text-base py-3.5 rounded-xl transition-all shadow-lg shadow-success-emerald/15">
+        <span class="material-symbols-outlined text-[20px]">chat</span>
+        Hubungi WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section
+      class="relative pt-16 pb-20 px-6 md:px-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div
+        class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-success-emerald/5 dark:bg-success-emerald/2 rounded-full blur-[120px]">
+      </div>
+
+      <div class="space-y-8 lg:col-span-7">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1.5 bg-success-emerald/10 text-success-emerald rounded-full font-semibold text-xs tracking-wider uppercase border border-success-emerald/20">
+          <span class="material-symbols-outlined text-[16px] fill-current">verified</span>
+          Terpercaya
+        </div>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-trust-navy dark:text-paper-white leading-tight">
+          Solusi Tugas Kuliah <span class="text-success-emerald block md:inline">Cepat, Tepat Waktu</span> &amp; Bebas
+          Plagiasi.
+        </h1>
+
+        <p class="text-lg text-slate-gray dark:text-slate-300 max-w-xl font-normal leading-relaxed">
+          Layanan pengerjaan tugas akademik profesional untuk Makalah, Essay, dan Ringkasan Buku dengan standar kualitas
+          tinggi, bebas Turnitin, dan kerahasiaan terjamin.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+          <a href="#order-section"
+            class="bg-success-emerald hover:bg-accent-emerald-dark text-paper-white font-semibold text-base px-8 py-4 rounded-xl flex items-center justify-center gap-3 shadow-lg shadow-success-emerald/20 transition-all hover:-translate-y-0.5">
+            Konsultasi Sekarang
+            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+          </a>
+          <a href="#kalkulator-section"
+            class="border-2 border-trust-navy dark:border-slate-400 text-trust-navy dark:text-slate-300 hover:bg-trust-navy hover:text-paper-white dark:hover:bg-slate-800 dark:hover:text-paper-white font-semibold text-base px-8 py-4 rounded-xl flex items-center justify-center transition-all hover:-translate-y-0.5">
+            Lihat Estimasi Biaya
+          </a>
+        </div>
+      </div>
+
+      <div class="relative lg:col-span-5 flex justify-center">
+        <!-- Decorative Graphic/Mockup of Premium Quality Document -->
+        <div
+          class="relative w-full max-w-md aspect-[4/3] bg-gradient-to-br from-trust-navy to-navy-light rounded-2xl shadow-2xl p-6 overflow-hidden flex flex-col justify-between border border-white/10 scroll-animate">
+          <!-- Top Ribbon -->
+          <div class="flex justify-between items-center">
+            <span
+              class="text-xs font-semibold tracking-wider text-success-emerald bg-success-emerald/10 border border-success-emerald/20 px-2.5 py-1 rounded-full uppercase">Akademik</span>
+            <div class="flex gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+              <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+            </div>
+          </div>
+          <!-- Central Document Illustration -->
+          <div class="my-6 space-y-3">
+            <div class="h-4 w-3/4 bg-white/20 rounded"></div>
+            <div class="h-2 w-full bg-white/10 rounded"></div>
+            <div class="h-2 w-full bg-white/10 rounded"></div>
+            <div class="h-2 w-5/6 bg-white/10 rounded"></div>
+            <div class="h-2 w-full bg-white/10 rounded"></div>
+            <div class="h-2 w-2/3 bg-white/10 rounded"></div>
+          </div>
+          <!-- Verification Badges -->
+          <div class="flex justify-between items-center border-t border-white/5 pt-4">
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-success-emerald text-[18px]">verified_user</span>
+              <span class="text-[11px] font-medium text-white/70">Anti-Plagiasi</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-success-emerald text-[18px]">alarm_on</span>
+              <span class="text-[11px] font-medium text-white/70">Garansi Deadline</span>
+            </div>
+          </div>
+          <!-- Embedded absolute grade banner -->
+          <div
+            class="absolute -right-8 -top-4 bg-success-emerald text-paper-white font-extrabold text-[13px] px-8 py-2.5 rotate-45 shadow-lg select-none">
+            GRADE A+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="layanan-section"
+      class="bg-slate-50 dark:bg-slate-900/40 py-20 px-6 md:px-12 border-y border-slate-100 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 space-y-4">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-trust-navy dark:text-paper-white tracking-tight">Layanan
+            Akademik Kami</h2>
+          <p class="text-base text-slate-gray dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">Dukungan penuh
+            untuk berbagai kebutuhan akademik Anda dengan hasil yang terstruktur dan berkualitas tinggi.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Service Card 1 -->
+          <div
+            class="glass-card p-8 rounded-2xl ambient-shadow flex flex-col justify-between h-full group scroll-animate">
+            <div>
+              <div
+                class="w-14 h-14 bg-trust-navy/5 dark:bg-white/5 rounded-2xl flex items-center justify-center mb-6 text-trust-navy dark:text-success-emerald group-hover:bg-success-emerald group-hover:text-paper-white dark:group-hover:text-paper-white transition-all duration-300">
+                <span class="material-symbols-outlined text-[32px]">description</span>
+              </div>
+              <h3 class="text-xl font-bold text-trust-navy dark:text-paper-white mb-4">Pembuatan Makalah</h3>
+              <p class="text-sm text-slate-gray dark:text-slate-400 mb-6 leading-relaxed">Makalah lengkap dengan cover,
+                bab pembahasan mendalam, format sistematika rapi, serta daftar pustaka relevan.</p>
+              <ul class="space-y-3 mb-8">
+                <li class="flex items-center gap-3 text-slate-gray dark:text-slate-300 text-sm">
+                  <span class="material-symbols-outlined text-success-emerald text-[18px]">check_circle</span> Daftar
+                  Pustaka Valid & Lengkap
+                </li>
+                <li class="flex items-center gap-3 text-slate-gray dark:text-slate-300 text-sm">
+                  <span class="material-symbols-outlined text-success-emerald text-[18px]">check_circle</span> Lolos Cek
+                  Turnitin (Orisinil)
+                </li>
+                <li class="flex items-center gap-3 text-slate-gray dark:text-slate-300 text-sm">
+                  <span class="material-symbols-outlined text-success-emerald text-[18px]">check_circle</span> Format
+                  Rapi & Standar Kampus
+                </li>
+              </ul>
+            </div>
+            <a href="#order-section"
+              class="w-full py-3 bg-success-emerald hover:bg-accent-emerald-dark text-paper-white font-semibold text-sm rounded-xl transition-all flex items-center justify-center gap-2">
+              Pesan Sekarang
+              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Service Card 2 -->
+          <div
+            class="glass-card p-8 rounded-2xl ambient-shadow flex flex-col justify-between h-full group scroll-animate">
+            <div>
+              <div
+                class="w-14 h-14 bg-trust-navy/5 dark:bg-white/5 rounded-2xl flex items-center justify-center mb-6 text-trust-navy dark:text-success-emerald group-hover:bg-success-emerald group-hover:text-paper-white dark:group-hover:text-paper-white transition-all duration-300">
+                <span class="material-symbols-outlined text-[32px]">book</span>
+              </div>
+              <h3 class="text-xl font-bold text-trust-navy dark:text-paper-white mb-4">Resume &amp; Ringkasan Buku</h3>
+              <p class="text-sm text-slate-gray dark:text-slate-400 mb-6 leading-relaxed">Penyusunan resume, review,
+                atau ringkasan buku secara komprehensif, menangkap inti gagasan utama per bab.</p>
+              <ul class="space-y-3 mb-8">
+                <li class="flex items-center gap-3 text-slate-gray dark:text-slate-300 text-sm">
+                  <span class="material-symbols-outlined text-success-emerald text-[18px]">check_circle</span> Menangkap
+                  Intisari Tiap Bab
+                </li>
+                <li class="flex items-center gap-3 text-slate-gray dark:text-slate-300 text-sm">
+                  <span class="material-symbols-outlined text-success-emerald text-[18px]">check_circle</span> Bahasa
+                  Baku, Rapi & Formal
+                </li>
+                <li class="flex items-center gap-3 text-slate-gray dark:text-slate-300 text-sm">
+                  <span class="material-symbols-outlined text-success-emerald text-[18px]">check_circle</span> Opsi
+                  Pengerjaan Kilat
+                </li>
+              </ul>
+            </div>
+            <a href="#order-section"
+              class="w-full py-3 bg-success-emerald hover:bg-accent-emerald-dark text-paper-white font-semibold text-sm rounded-xl transition-all flex items-center justify-center gap-2">
+              Pesan Sekarang
+              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Service Card 3 -->
+          <div
+            class="glass-card p-8 rounded-2xl ambient-shadow flex flex-col justify-between h-full group scroll-animate">
+            <div>
+              <div
+                class="w-14 h-14 bg-trust-navy/5 dark:bg-white/5 rounded-2xl flex items-center justify-center mb-6 text-trust-navy dark:text-success-emerald group-hover:bg-success-emerald group-hover:text-paper-white dark:group-hover:text-paper-white transition-all duration-300">
+                <span class="material-symbols-outlined text-[32px]">edit_note</span>
+              </div>
+              <h3 class="text-xl font-bold text-trust-navy dark:text-paper-white mb-4">Esai &amp; Artikel Akademik</h3>
+              <p class="text-sm text-slate-gray dark:text-slate-400 mb-6 leading-relaxed">Penulisan esai argumen, opini
+                terstruktur, opini ilmiah, hingga artikel populer dengan analisis kritis yang tajam.</p>
+              <ul class="space-y-3 mb-8">
+                <li class="flex items-center gap-3 text-slate-gray dark:text-slate-300 text-sm">
+                  <span class="material-symbols-outlined text-success-emerald text-[18px]">check_circle</span> Analisis
+                  Kritis & Tajam
+                </li>
+                <li class="flex items-center gap-3 text-slate-gray dark:text-slate-300 text-sm">
+                  <span class="material-symbols-outlined text-success-emerald text-[18px]">check_circle</span> Sesuai
+                  Format & Rubrik Penulisan
+                </li>
+                <li class="flex items-center gap-3 text-slate-gray dark:text-slate-300 text-sm">
+                  <span class="material-symbols-outlined text-success-emerald text-[18px]">check_circle</span> Garansi
+                  Revisi Ringan Gratis
+                </li>
+              </ul>
+            </div>
+            <a href="#order-section"
+              class="w-full py-3 bg-success-emerald hover:bg-accent-emerald-dark text-paper-white font-semibold text-sm rounded-xl transition-all flex items-center justify-center gap-2">
+              Pesan Sekarang
+              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic Cost Estimator Section -->
+    <section id="kalkulator-section" class="py-20 px-6 md:px-12 bg-paper-white dark:bg-[#09111e]">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12 space-y-4">
+          <span class="text-success-emerald text-sm font-semibold tracking-widest uppercase">Pricing Widget</span>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-trust-navy dark:text-paper-white tracking-tight">
+            Kalkulator Estimasi Biaya</h2>
+          <p class="text-base text-slate-gray dark:text-slate-400 max-w-xl mx-auto leading-relaxed">Dapatkan perkiraan
+            biaya pengerjaan tugas secara instan. Hasil perhitungan di bawah merupakan estimasi harga wajar.</p>
+        </div>
+
+        <div
+          class="bg-slate-50 dark:bg-[#0c1628] rounded-3xl p-6 md:p-10 border border-slate-100 dark:border-slate-800/80 shadow-xl scroll-animate">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Controls -->
+            <div class="space-y-6">
+              <div>
+                <label class="block text-sm font-semibold text-trust-navy dark:text-slate-300 mb-2">Jenjang
+                  Pendidikan</label>
+                <select id="calc-level"
+                  class="w-full bg-paper-white dark:bg-[#121f35] border-slate-200 dark:border-slate-700/60 rounded-xl p-3 focus:ring-2 focus:ring-success-emerald text-sm text-slate-800 dark:text-slate-100 outline-none">
+                  <option value="sma">SMA / Sederajat</option>
+                  <option value="s1" selected>S1 / Diploma (Rekomendasi)</option>
+                  <option value="s2">S2 / Master</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-trust-navy dark:text-slate-300 mb-2">Jenis Layanan
+                  Tugas</label>
+                <select id="calc-service"
+                  class="w-full bg-paper-white dark:bg-[#121f35] border-slate-200 dark:border-slate-700/60 rounded-xl p-3 focus:ring-2 focus:ring-success-emerald text-sm text-slate-800 dark:text-slate-100 outline-none">
+                  <option value="makalah">Pembuatan Makalah</option>
+                  <option value="resume">Resume & Ringkasan Buku</option>
+                  <option value="esai">Esai & Artikel Akademik</option>
+                  <option value="lainnya">Lainnya / Project Khusus</option>
+                </select>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <label class="text-sm font-semibold text-trust-navy dark:text-slate-300">Jumlah Halaman</label>
+                  <span class="text-sm font-bold text-success-emerald"><span id="pages-value">5</span> Halaman</span>
+                </div>
+                <input id="calc-pages" type="range" min="1" max="50" value="5"
+                  class="w-full accent-success-emerald bg-slate-200 dark:bg-slate-700 h-2 rounded-lg cursor-pointer" />
+                <div class="flex justify-between text-[11px] text-slate-gray dark:text-slate-400 mt-1">
+                  <span>1 Halaman</span>
+                  <span>25 Halaman</span>
+                  <span>50 Halaman</span>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm font-semibold text-trust-navy dark:text-slate-300 mb-2">Kecepatan Pengerjaan
+                  (Deadline)</label>
+                <select id="calc-deadline"
+                  class="w-full bg-paper-white dark:bg-[#121f35] border-slate-200 dark:border-slate-700/60 rounded-xl p-3 focus:ring-2 focus:ring-success-emerald text-sm text-slate-800 dark:text-slate-100 outline-none">
+                  <option value="standard">Standard (Selesai > 5 Hari)</option>
+                  <option value="express" selected>Express (Selesai 2 - 4 Hari)</option>
+                  <option value="kilat">Kilat (Selesai &lt; 24 Jam)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Pricing Display -->
+            <div
+              class="flex flex-col justify-between bg-trust-navy dark:bg-[#080f1d] text-paper-white p-6 md:p-8 rounded-2xl border border-white/5">
+              <div class="space-y-4">
+                <h4 class="text-sm font-semibold text-success-emerald uppercase tracking-wider">Perkiraan Biaya:</h4>
+                <div class="space-y-1">
+                  <div class="text-4xl font-extrabold tracking-tight text-white">
+                    <span id="calc-min-price">Rp 120.000</span>
+                  </div>
+                  <div class="text-xs text-white/50 font-medium">s/d</div>
+                  <div class="text-3xl font-bold tracking-tight text-white/90">
+                    <span id="calc-max-price">Rp 140.000</span>
+                  </div>
+                </div>
+                <p class="text-xs text-white/60 leading-relaxed pt-2">
+                  *Biaya di atas hanyalah perkiraan wajar berdasarkan variabel pilihan Anda. Harga final dapat
+                  bervariasi bergantung pada kompleksitas topik tugas.
+                </p>
+              </div>
+
+              <button id="use-estimate-btn"
+                class="w-full mt-8 py-3.5 bg-success-emerald hover:bg-accent-emerald-dark text-paper-white font-bold text-sm rounded-xl transition-all shadow-lg shadow-success-emerald/10 hover:shadow-success-emerald/20 flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-[18px]">check_circle</span>
+                Gunakan Estimasi Ini untuk Memesan
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step Section -->
+    <section id="cara-pesan-section"
+      class="py-20 px-6 md:px-12 bg-slate-50 dark:bg-slate-900/40 border-y border-slate-100 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 space-y-4">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-trust-navy dark:text-paper-white tracking-tight">Cara
+            Pemesanan</h2>
+          <p class="text-base text-slate-gray dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">Prosedur simpel,
+            transparan, dan terjamin untuk hasil terbaik.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+          <!-- Step 1 -->
+          <div class="text-center space-y-4 group scroll-animate">
+            <div
+              class="relative w-16 h-16 bg-trust-navy dark:bg-navy-light text-paper-white rounded-2xl mx-auto flex items-center justify-center z-10 shadow-lg shadow-trust-navy/10 group-hover:scale-105 transition-transform duration-300">
+              <span class="material-symbols-outlined text-[28px] text-success-emerald">chat_bubble</span>
+            </div>
+            <h4 class="text-lg font-bold text-trust-navy dark:text-paper-white">1. Konsultasi</h4>
+            <p class="text-sm text-slate-gray dark:text-slate-400 leading-relaxed px-4">Detailkan tugas, deadline, dan
+              referensi khusus yang dibutuhkan.</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="text-center space-y-4 group scroll-animate">
+            <div
+              class="relative w-16 h-16 bg-trust-navy dark:bg-navy-light text-paper-white rounded-2xl mx-auto flex items-center justify-center z-10 shadow-lg shadow-trust-navy/10 group-hover:scale-105 transition-transform duration-300">
+              <span class="material-symbols-outlined text-[28px] text-success-emerald">payments</span>
+            </div>
+            <h4 class="text-lg font-bold text-trust-navy dark:text-paper-white">2. Penawaran & Deal</h4>
+            <p class="text-sm text-slate-gray dark:text-slate-400 leading-relaxed px-4">Dapatkan penawaran harga terbaik
+              & lakukan DP atau pembayaran lunas.</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="text-center space-y-4 group scroll-animate">
+            <div
+              class="relative w-16 h-16 bg-trust-navy dark:bg-navy-light text-paper-white rounded-2xl mx-auto flex items-center justify-center z-10 shadow-lg shadow-trust-navy/10 group-hover:scale-105 transition-transform duration-300">
+              <span class="material-symbols-outlined text-[28px] text-success-emerald">engineering</span>
+            </div>
+            <h4 class="text-lg font-bold text-trust-navy dark:text-paper-white">3. Pengerjaan</h4>
+            <p class="text-sm text-slate-gray dark:text-slate-400 leading-relaxed px-4">Tugas Anda dikerjakan secara
+              profesional & objektif oleh tim penulis ahli.</p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="text-center space-y-4 group scroll-animate">
+            <div
+              class="relative w-16 h-16 bg-trust-navy dark:bg-navy-light text-paper-white rounded-2xl mx-auto flex items-center justify-center z-10 shadow-lg shadow-trust-navy/10 group-hover:scale-105 transition-transform duration-300">
+              <span class="material-symbols-outlined text-[28px] text-success-emerald">task_alt</span>
+            </div>
+            <h4 class="text-lg font-bold text-trust-navy dark:text-paper-white">4. Pengiriman</h4>
+            <p class="text-sm text-slate-gray dark:text-slate-400 leading-relaxed px-4">Hasil dikirimkan dalam format
+              rapi. Revisi tersedia apabila diperlukan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial & Evidence Section -->
+    <section id="portofolio-section" class="py-20 px-6 md:px-12 bg-paper-white dark:bg-[#09111e] overflow-hidden">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 space-y-4">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-trust-navy dark:text-paper-white tracking-tight">Bukti
+            Kualitas &amp; Kepercayaan</h2>
+          <p class="text-base text-slate-gray dark:text-slate-400 max-w-xl mx-auto leading-relaxed">Ratusan mahasiswa
+            telah memberikan review positif atas pengerjaan kami.</p>
+        </div>
+
+        <!-- Grade Mockups Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+          <!-- Card A+ -->
+          <div
+            class="relative bg-slate-50 dark:bg-[#0c1628] p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80 shadow-sm scroll-animate">
+            <div
+              class="aspect-[3/4] bg-slate-200/50 dark:bg-slate-900/60 rounded-xl relative p-5 flex flex-col justify-between overflow-hidden">
+              <div class="absolute -right-6 -top-6 w-20 h-20 bg-success-emerald/10 rounded-full"></div>
+              <div class="space-y-2">
+                <div class="h-3 w-3/4 bg-slate-300 dark:bg-slate-700 rounded"></div>
+                <div class="h-2 w-full bg-slate-300/60 dark:bg-slate-700/50 rounded"></div>
+                <div class="h-2 w-5/6 bg-slate-300/60 dark:bg-slate-700/50 rounded"></div>
+              </div>
+              <div class="bg-success-emerald text-white text-[10px] font-bold px-2 py-1 rounded self-start uppercase">
+                Grade A+</div>
+              <div
+                class="text-slate-700 dark:text-slate-300 text-xs font-semibold select-none border-t border-slate-300/30 dark:border-slate-700/30 pt-3">
+                100% Bebas Plagiasi
+              </div>
+            </div>
+          </div>
+
+          <!-- Card A 1 -->
+          <div
+            class="relative bg-slate-50 dark:bg-[#0c1628] p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80 shadow-sm scroll-animate">
+            <div
+              class="aspect-[3/4] bg-slate-200/50 dark:bg-slate-900/60 rounded-xl relative p-5 flex flex-col justify-between overflow-hidden">
+              <div class="absolute -right-6 -top-6 w-20 h-20 bg-success-emerald/10 rounded-full"></div>
+              <div class="space-y-2">
+                <div class="h-3 w-1/2 bg-slate-300 dark:bg-slate-700 rounded"></div>
+                <div class="h-2 w-full bg-slate-300/60 dark:bg-slate-700/50 rounded"></div>
+                <div class="h-2 w-4/5 bg-slate-300/60 dark:bg-slate-700/50 rounded"></div>
+              </div>
+              <div class="bg-success-emerald text-white text-[10px] font-bold px-2 py-1 rounded self-start uppercase">
+                Grade A</div>
+              <div
+                class="text-slate-700 dark:text-slate-300 text-xs font-semibold select-none border-t border-slate-300/30 dark:border-slate-700/30 pt-3">
+                Cek Turnitin: 0%
+              </div>
+            </div>
+          </div>
+
+          <!-- Card A 2 -->
+          <div
+            class="relative bg-slate-50 dark:bg-[#0c1628] p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80 shadow-sm scroll-animate">
+            <div
+              class="aspect-[3/4] bg-slate-200/50 dark:bg-slate-900/60 rounded-xl relative p-5 flex flex-col justify-between overflow-hidden">
+              <div class="absolute -right-6 -top-6 w-20 h-20 bg-success-emerald/10 rounded-full"></div>
+              <div class="space-y-2">
+                <div class="h-3 w-2/3 bg-slate-300 dark:bg-slate-700 rounded"></div>
+                <div class="h-2 w-full bg-slate-300/60 dark:bg-slate-700/50 rounded"></div>
+                <div class="h-2 w-5/6 bg-slate-300/60 dark:bg-slate-700/50 rounded"></div>
+              </div>
+              <div class="bg-success-emerald text-white text-[10px] font-bold px-2 py-1 rounded self-start uppercase">
+                Grade A</div>
+              <div
+                class="text-slate-700 dark:text-slate-300 text-xs font-semibold select-none border-t border-slate-300/30 dark:border-slate-700/30 pt-3">
+                Analisis Kritis Tajam
+              </div>
+            </div>
+          </div>
+
+          <!-- Card A 3 -->
+          <div
+            class="relative bg-slate-50 dark:bg-[#0c1628] p-4 rounded-2xl border border-slate-100 dark:border-slate-800/80 shadow-sm scroll-animate">
+            <div
+              class="aspect-[3/4] bg-slate-200/50 dark:bg-slate-900/60 rounded-xl relative p-5 flex flex-col justify-between overflow-hidden">
+              <div class="absolute -right-6 -top-6 w-20 h-20 bg-success-emerald/10 rounded-full"></div>
+              <div class="space-y-2">
+                <div class="h-3 w-3/4 bg-slate-300 dark:bg-slate-700 rounded"></div>
+                <div class="h-2 w-full bg-slate-300/60 dark:bg-slate-700/50 rounded"></div>
+                <div class="h-2 w-full bg-slate-300/60 dark:bg-slate-700/50 rounded"></div>
+              </div>
+              <div class="bg-success-emerald text-white text-[10px] font-bold px-2 py-1 rounded self-start uppercase">
+                Grade A+</div>
+              <div
+                class="text-slate-700 dark:text-slate-300 text-xs font-semibold select-none border-t border-slate-300/30 dark:border-slate-700/30 pt-3">
+                Sesuai Rubrik Dosen
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonials Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div
+            class="glass-card p-8 rounded-2xl border border-slate-100 dark:border-slate-800/80 ambient-shadow scroll-animate">
+            <div class="flex text-success-emerald mb-4">
+              <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+              <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+              <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+              <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+              <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+            </div>
+            <p class="italic text-sm text-slate-gray dark:text-slate-300 mb-6 leading-relaxed">
+              "Pengerjaannya sangat rapi, daftar pustaka valid dan akurat. Dosen memberi nilai A untuk tugas akhir
+              semester saya. Terima kasih SolusiJoki!"
+            </p>
+            <div class="flex items-center gap-4 border-t border-slate-100 dark:border-slate-800/60 pt-4">
+              <div
+                class="w-10 h-10 bg-success-emerald/10 text-success-emerald rounded-full flex items-center justify-center font-bold text-sm">
+                RS</div>
+              <div>
+                <h4 class="text-sm font-bold text-trust-navy dark:text-paper-white">Rina S.</h4>
+                <p class="text-xs text-slate-gray dark:text-slate-400">Mahasiswa UNPAD</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div
+            class="glass-card p-8 rounded-2xl border border-slate-100 dark:border-slate-800/80 ambient-shadow scroll-animate">
+            <div class="flex text-success-emerald mb-4">
+              <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+              <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+              <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+              <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+              <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+            </div>
+            <p class="italic text-sm text-slate-gray dark:text-slate-300 mb-6 leading-relaxed">
+              "Keren banget, pengerjaan resume bukunya rapi dan selesai sebelum deadline. Buku tebal diringkas dengan
+              bahasa baku formal yang terstruktur."
+            </p>
+            <div class="flex items-center gap-4 border-t border-slate-100 dark:border-slate-800/60 pt-4">
+              <div
+                class="w-10 h-10 bg-success-emerald/10 text-success-emerald rounded-full flex items-center justify-center font-bold text-sm">
+                AW</div>
+              <div>
+                <h4 class="text-sm font-bold text-trust-navy dark:text-paper-white">Andi W.</h4>
+                <p class="text-xs text-slate-gray dark:text-slate-400">Mahasiswa UI</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div
+            class="glass-card p-8 rounded-2xl border border-slate-100 dark:border-slate-800/80 ambient-shadow scroll-animate">
+            <div class="flex text-success-emerald mb-4">
+              <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+              <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+              <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+              <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+              <span class="material-symbols-outlined text-[20px] fill-current">star</span>
+            </div>
+            <p class="italic text-sm text-slate-gray dark:text-slate-300 mb-6 leading-relaxed">
+              "Sudah langganan di sini untuk pembuatan esai ilmiah. Hasil analisisnya tajam, format kutipan APA-nya
+              rapi. Sangat profesional!"
+            </p>
+            <div class="flex items-center gap-4 border-t border-slate-100 dark:border-slate-800/60 pt-4">
+              <div
+                class="w-10 h-10 bg-success-emerald/10 text-success-emerald rounded-full flex items-center justify-center font-bold text-sm">
+                MP</div>
+              <div>
+                <h4 class="text-sm font-bold text-trust-navy dark:text-paper-white">Maya P.</h4>
+                <p class="text-xs text-slate-gray dark:text-slate-400">Mahasiswa UGM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="order-section" class="py-20 px-6 md:px-12 bg-slate-50 dark:bg-slate-900/40 relative">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Text Area -->
+        <div class="space-y-8">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-trust-navy dark:text-paper-white leading-tight">Mulai
+            Pengerjaan Tugas Anda Sekarang.</h2>
+          <p class="text-base text-slate-gray dark:text-slate-300 leading-relaxed">Isi data formulir berikut untuk
+            mengirimkan rincian pesanan langsung ke admin WhatsApp kami. Konsultasi ini bersifat gratis.</p>
+
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="bg-success-emerald/10 p-3 rounded-xl text-success-emerald border border-success-emerald/20">
+                <span class="material-symbols-outlined">lock</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-trust-navy dark:text-paper-white text-base">100% Rahasia Terjaga</h4>
+                <p class="text-slate-gray dark:text-slate-400 text-sm mt-1">Identitas pribadi serta materi tugas
+                  akademik Anda dijamin kerahasiaannya.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="bg-success-emerald/10 p-3 rounded-xl text-success-emerald border border-success-emerald/20">
+                <span class="material-symbols-outlined">timer</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-trust-navy dark:text-paper-white text-base">Garansi Tepat Waktu</h4>
+                <p class="text-slate-gray dark:text-slate-400 text-sm mt-1">Kami berkomitmen mengirimkan tugas sebelum
+                  atau tepat pada deadline kesepakatan.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="bg-success-emerald/10 p-3 rounded-xl text-success-emerald border border-success-emerald/20">
+                <span class="material-symbols-outlined">support_agent</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-trust-navy dark:text-paper-white text-base">Konsultasi Interaktif</h4>
+                <p class="text-slate-gray dark:text-slate-400 text-sm mt-1">Anda bisa melakukan tanya jawab dan revisi
+                  secara langsung melalui chat WhatsApp.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Form Card -->
+        <div
+          class="bg-paper-white dark:bg-[#0c1628] p-8 rounded-3xl border border-slate-100 dark:border-slate-800/80 shadow-xl scroll-animate">
+          <form id="order-form" class="space-y-5">
+            <div>
+              <label class="block text-sm font-semibold text-trust-navy dark:text-slate-300 mb-2">Nama Lengkap</label>
+              <input id="form-name" required
+                class="w-full bg-slate-50 dark:bg-[#121f35] border-slate-200 dark:border-slate-700/60 rounded-xl p-3 focus:ring-2 focus:ring-success-emerald text-sm text-slate-800 dark:text-slate-100 outline-none"
+                placeholder="Masukkan nama Anda" type="text" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-semibold text-trust-navy dark:text-slate-300 mb-2">Jenis
+                  Layanan</label>
+                <select id="form-service"
+                  class="w-full bg-slate-50 dark:bg-[#121f35] border-slate-200 dark:border-slate-700/60 rounded-xl p-3 focus:ring-2 focus:ring-success-emerald text-sm text-slate-800 dark:text-slate-100 outline-none">
+                  <option>Makalah</option>
+                  <option>Resume Buku</option>
+                  <option>Esai Akademik</option>
+                  <option>Lainnya</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-trust-navy dark:text-slate-300 mb-2">Jenjang
+                  Pendidikan</label>
+                <select id="form-level"
+                  class="w-full bg-slate-50 dark:bg-[#121f35] border-slate-200 dark:border-slate-700/60 rounded-xl p-3 focus:ring-2 focus:ring-success-emerald text-sm text-slate-800 dark:text-slate-100 outline-none">
+                  <option>SMA / Sederajat</option>
+                  <option selected>S1 / Diploma</option>
+                  <option>S2 / Master</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-semibold text-trust-navy dark:text-slate-300 mb-2">Jumlah
+                  Halaman</label>
+                <input id="form-pages" type="number" min="1" max="100" value="5"
+                  class="w-full bg-slate-50 dark:bg-[#121f35] border-slate-200 dark:border-slate-700/60 rounded-xl p-3 focus:ring-2 focus:ring-success-emerald text-sm text-slate-800 dark:text-slate-100 outline-none" />
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-trust-navy dark:text-slate-300 mb-2">Tanggal
+                  Deadline</label>
+                <input id="form-deadline" required
+                  class="w-full bg-slate-50 dark:bg-[#121f35] border-slate-200 dark:border-slate-700/60 rounded-xl p-3 focus:ring-2 focus:ring-success-emerald text-sm text-slate-800 dark:text-slate-100 outline-none"
+                  type="date" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-trust-navy dark:text-slate-300 mb-2">Detail & Deskripsi
+                Tugas</label>
+              <textarea id="form-details"
+                class="w-full bg-slate-50 dark:bg-[#121f35] border-slate-200 dark:border-slate-700/60 rounded-xl p-3 focus:ring-2 focus:ring-success-emerald text-sm text-slate-800 dark:text-slate-100 outline-none resize-none"
+                placeholder="Tuliskan petunjuk tugas Anda (Tema, format tulisan, jurnal referensi khusus, dll)"
+                rows="4"></textarea>
+            </div>
+
+            <button
+              class="w-full bg-success-emerald hover:bg-accent-emerald-dark text-paper-white font-bold text-base py-4 rounded-xl flex items-center justify-center gap-3 transition-all shadow-lg shadow-success-emerald/10 hover:shadow-success-emerald/20"
+              type="submit">
+              Kirim via WhatsApp
+              <span class="material-symbols-outlined">send</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section (Accordion Style) -->
+    <section id="faq-section" class="py-20 px-6 md:px-12 bg-paper-white dark:bg-[#09111e]">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16 space-y-4">
+          <h2
+            class="text-3xl md:text-4xl font-extrabold text-trust-navy dark:text-paper-white tracking-tight font-sans">
+            Frequently Asked Questions</h2>
+          <p class="text-base text-slate-gray dark:text-slate-400 max-w-xl mx-auto leading-relaxed">Pertanyaan yang
+            sering diajukan seputar layanan pengerjaan tugas akademik kami.</p>
+        </div>
+
+        <div class="space-y-4">
+          <!-- FAQ 1 -->
+          <div
+            class="border border-slate-100 dark:border-slate-800/80 rounded-2xl overflow-hidden bg-slate-50 dark:bg-[#0c1628] scroll-animate">
+            <button class="faq-header w-full p-6 text-left flex justify-between items-center outline-none">
+              <span class="font-bold text-trust-navy dark:text-slate-200 text-base">Apakah hasil pengerjaan dijamin
+                bebas plagiasi?</span>
+              <span
+                class="faq-icon material-symbols-outlined text-success-emerald transition-transform duration-300">expand_more</span>
+            </button>
+            <div class="accordion-content">
+              <div
+                class="p-6 pt-0 text-sm text-slate-gray dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/40">
+                Ya. Semua tulisan dikerjakan secara manual dan orisinil oleh penulis ahli kami. Kami memberikan garansi
+                lolos cek Turnitin dengan batasan persentase kemiripan rendah sesuai instruksi kampus Anda.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div
+            class="border border-slate-100 dark:border-slate-800/80 rounded-2xl overflow-hidden bg-slate-50 dark:bg-[#0c1628] scroll-animate">
+            <button class="faq-header w-full p-6 text-left flex justify-between items-center outline-none">
+              <span class="font-bold text-trust-navy dark:text-slate-200 text-base">Bagaimana jika hasilnya tidak sesuai
+                instruksi?</span>
+              <span
+                class="faq-icon material-symbols-outlined text-success-emerald transition-transform duration-300">expand_more</span>
+            </button>
+            <div class="accordion-content">
+              <div
+                class="p-6 pt-0 text-sm text-slate-gray dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/40">
+                Kepuasan Anda adalah prioritas kami. Jika terdapat hasil pengerjaan yang kurang presisi atau terlewat
+                dari arahan awal yang Anda berikan, kami menyediakan fasilitas revisi gratis sampai tugas dinyatakan
+                sesuai.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div
+            class="border border-slate-100 dark:border-slate-800/80 rounded-2xl overflow-hidden bg-slate-50 dark:bg-[#0c1628] scroll-animate">
+            <button class="faq-header w-full p-6 text-left flex justify-between items-center outline-none">
+              <span class="font-bold text-trust-navy dark:text-slate-200 text-base">Bagaimana sistem
+                pembayarannya?</span>
+              <span
+                class="faq-icon material-symbols-outlined text-success-emerald transition-transform duration-300">expand_more</span>
+            </button>
+            <div class="accordion-content">
+              <div
+                class="p-6 pt-0 text-sm text-slate-gray dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/40">
+                Setelah Anda mengisi formulir dan menyepakati penawaran harga resmi dari admin, Anda dapat memilih
+                metode pembayaran lunas atau membayar Down Payment (DP) sebesar 50% terlebih dahulu. Pelunasan dilakukan
+                setelah pengerjaan tugas selesai.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div
+            class="border border-slate-100 dark:border-slate-800/80 rounded-2xl overflow-hidden bg-slate-50 dark:bg-[#0c1628] scroll-animate">
+            <button class="faq-header w-full p-6 text-left flex justify-between items-center outline-none">
+              <span class="font-bold text-trust-navy dark:text-slate-200 text-base">Apakah identitas saya aman dan
+                rahasia?</span>
+              <span
+                class="faq-icon material-symbols-outlined text-success-emerald transition-transform duration-300">expand_more</span>
+            </button>
+            <div class="accordion-content">
+              <div
+                class="p-6 pt-0 text-sm text-slate-gray dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/40">
+                Tentu saja. Kerahasiaan data pribadi Anda terjamin 100%. Nama, universitas, maupun rincian tugas Anda
+                tidak akan pernah kami publikasikan atau berikan kepada pihak ketiga.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-trust-navy dark:bg-[#060d18] text-white border-t border-white/5">
+    <div
+      class="flex flex-col md:flex-row justify-between items-start px-6 md:px-12 py-16 w-full max-w-7xl mx-auto gap-12">
+      <!-- Col 1: Brand -->
+      <div class="space-y-4 max-w-xs">
+        <div class="flex items-center gap-2">
+          <img alt="SolusiJoki.id" class="h-8 w-auto object-contain" src="assets/img/Only-logo-removebg-preview.png" />
+          <span class="font-bold text-xl tracking-tight">SolusiJoki<span class="text-success-emerald">.id</span></span>
+        </div>
+        <p class="text-sm text-white/60 leading-relaxed">
+          Layanan bantuan pengerjaan tugas akademik terpercaya yang mengutamakan orisinalitas, ketepatan waktu, dan
+          kepuasan mahasiswa sejak 2018.
+        </p>
+        <p class="text-xs text-white/45">
+          © 2026 SolusiJoki.id. All rights reserved.
+        </p>
+      </div>
+
+      <!-- Col 2: Navigation Links -->
+      <div class="space-y-4">
+        <h4 class="text-sm font-semibold uppercase tracking-wider text-success-emerald">Tautan Cepat</h4>
+        <div class="flex flex-col space-y-2 text-sm text-white/70">
+          <a class="hover:text-success-emerald transition-colors" href="#layanan-section">Layanan Utama</a>
+          <a class="hover:text-success-emerald transition-colors" href="#kalkulator-section">Estimasi Tarif</a>
+          <a class="hover:text-success-emerald transition-colors" href="#cara-pesan-section">Sistematika Pemesanan</a>
+          <a class="hover:text-success-emerald transition-colors" href="#portofolio-section">Ulasan Testimoni</a>
+          <a class="hover:text-success-emerald transition-colors" href="#faq-section">Tanya Jawab (FAQ)</a>
+        </div>
+      </div>
+
+      <!-- Col 3: Contacts -->
+      <div class="space-y-4">
+        <h4 class="text-sm font-semibold uppercase tracking-wider text-success-emerald">Kontak Resmi</h4>
+        <div class="flex flex-col space-y-3 text-sm text-white/70">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px] text-success-emerald">chat</span>
+            <a href="https://api.whatsapp.com/send?phone=6285184852924" target="_blank"
+              class="hover:underline hover:text-success-emerald">+62 851-8485-2924</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px] text-success-emerald">mail</span>
+            <a href="mailto:support@solusijoki.id"
+              class="hover:underline hover:text-success-emerald">support@solusijoki.id</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Chat Widget -->
+  <a href="https://api.whatsapp.com/send?phone=6285184852924&text=Halo%20SolusiJoki.id%2C%20saya%20tertarik%20dengan%20layanan%20jasa%20tugas%20akademik%20Anda.%20Bisa%20bantu%20saya%3F"
+    target="_blank"
+    class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-success-emerald text-paper-white rounded-full shadow-2xl hover:bg-accent-emerald-dark transition-all hover:scale-105 active:scale-95 float-animation"
+    aria-label="Chat with Admin">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+      <path
+        d="M12.031 2C6.48 2 2 6.48 2 12.03c0 1.97.57 3.81 1.56 5.37L2 22l4.76-1.5c1.48.87 3.2 1.37 5.04 1.37 5.55 0 10.03-4.48 10.03-10.03S17.58 2 12.031 2zm6.27 13.9c-.27.77-1.37 1.4-1.88 1.49-.44.08-.88.16-2.88-.66-2.56-1.05-4.14-3.66-4.27-3.83-.12-.17-1.07-1.42-1.07-2.7 0-1.29.67-1.93.91-2.19.24-.26.54-.33.72-.33h.52c.16 0 .38-.06.59.44.22.54.76 1.85.83 1.99.07.15.12.32.02.5-.1.18-.15.3-.3.47-.15.17-.32.39-.45.52-.15.15-.3.32-.13.6.17.29.77 1.27 1.66 2.06.89.79 1.64 1.04 1.94 1.19.3.15.48.12.66-.08.18-.2.78-.9.99-1.21.2-.31.4-.26.68-.16.27.1.1.84.84.99 1.13.56.91.07.97.23.06.16-.14.7-.42.98z" />
+    </svg>
+  </a>
+
+  <!-- App Main JS file -->
+  <script src="js/app.js"></script>
+</body>
+
+</html>
