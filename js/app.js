@@ -39,19 +39,37 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * 3. Manajemen Tema (Light / Dark Mode)
+ * 3. Manajemen Tema (Light / Dark Mode) - Default Mode Terang
  */
 function initThemeToggle() {
   const themeToggleBtn = document.getElementById('theme-toggle');
   if (!themeToggleBtn) return;
 
-  if (localStorage.getItem('color-theme') === 'dark' ||
-    (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
+  const themeIcon = themeToggleBtn.querySelector('.material-symbols-outlined') || themeToggleBtn;
+
+  function syncThemeVisual() {
+    const isDark = document.documentElement.classList.contains('dark');
+    if (isDark) {
+      if (themeIcon && themeIcon.textContent) themeIcon.textContent = 'light_mode'; // Ikon matahari saat gelap
+    } else {
+      if (themeIcon && themeIcon.textContent) themeIcon.textContent = 'dark_mode';  // Ikon bulan saat terang
+    }
   }
 
+  // 1. Cek memori penyimpanan browser
+  const savedTheme = localStorage.getItem('color-theme');
+  if (savedTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    // Selalu paksa masuk mode terang jika tidak ada riwayat memilih mode gelap
+    document.documentElement.classList.remove('dark');
+    localStorage.setItem('color-theme', 'light');
+  }
+
+  // Jalankan penyesuaian visual ikon tombol
+  syncThemeVisual();
+
+  // 2. Aksi tombol penukar tema ketika diklik
   themeToggleBtn.addEventListener('click', () => {
     if (document.documentElement.classList.contains('dark')) {
       document.documentElement.classList.remove('dark');
@@ -60,9 +78,9 @@ function initThemeToggle() {
       document.documentElement.classList.add('dark');
       localStorage.setItem('color-theme', 'dark');
     }
+    syncThemeVisual();
   });
 }
-
 /**
  * 4. Kontrol Navigasi Menu Mobile (Drawer)
  */
