@@ -511,6 +511,30 @@
       confirmBtn.disabled = !selectedMethod;
     }
 
+    // Calculate estimated price based on service, pages, and other factors
+    function calculateEstimatedPrice() {
+      if (!orderData) return 0;
+      
+      // Base price calculation
+      const basePrice = parseInt(orderData.pages) * 25000;
+      
+      // Apply service multiplier if available
+      const serviceMultipliers = {
+        'makalah': 1.0,
+        'resume': 0.9,
+        'esai': 1.2,
+        'lainnya': 1.3
+      };
+      
+      const serviceMultiplier = serviceMultipliers[orderData.service] || 1.0;
+      const levelMultiplier = orderData.level === 's2' ? 1.3 : orderData.level === 's1' ? 1.0 : 0.85;
+      
+      // Calculate final estimated price
+      const estimatedPrice = Math.round(basePrice * serviceMultiplier * levelMultiplier);
+      
+      return estimatedPrice;
+    }
+
     // Confirm Order
     function confirmOrder() {
       if (!selectedMethod) {
@@ -518,19 +542,46 @@
         return;
       }
 
+      // Calculate estimated price
+      const estimatedPrice = calculateEstimatedPrice();
+      const estimatedPriceFormatted = 'Rp ' + estimatedPrice.toLocaleString('id-ID');
+
       const orderSummary = `Halo SolusiJoki.id, saya ingin melanjutkan pembayaran pesanan berikut:
 
+═══════════════════════════════════════
+📋 *RINGKASAN PESANAN*
+═══════════════════════════════════════
+
 👤 *Nama:* ${orderData.name}
-📚 *Layanan:* ${orderData.service}
-📄 *Halaman:* ${orderData.pages}
+📚 *Layanan:* ${orderData.service.charAt(0).toUpperCase() + orderData.service.slice(1)}
+📄 *Jumlah Halaman:* ${orderData.pages} halaman
+🎓 *Level Pendidikan:* ${orderData.level.toUpperCase()}
 📅 *Deadline:* ${orderData.formattedDeadline}
-⏰ *Timing:* ${selectedTiming === 'now' ? 'Bayar Sekarang' : 'Bayar Nanti'}
-💳 *Metode Pembayaran:* ${selectedMethod === 'dana' ? 'Dana (083153145931)' : 'BRI (4782456127945)'}
+⏰ *Timing Pembayaran:* ${selectedTiming === 'now' ? 'Bayar Sekarang' : 'Bayar Nanti'}
 
-📝 *Detail Tugas:*
-${orderData.details || '(Akan dijelaskan lebih detail saat chat)'}
+═══════════════════════════════════════
+💳 *METODE PEMBAYARAN*
+═══════════════════════════════════════
 
-Mohon konfirmasi dan panduan pembayaran selanjutnya. Terima kasih!`;
+${selectedMethod === 'dana' ? '💰 *Dana (E-Wallet)*\n📱 Nomor: 083153145931' : '🏦 *Bank BRI*\n🔢 Rekening: 4782456127945\n👤 Atas Nama: PT SolusiJoki Indonesia'}
+
+═══════════════════════════════════════
+💰 *ESTIMASI BIAYA*
+═══════════════════════════════════════
+
+💵 Estimasi Biaya: ${estimatedPriceFormatted}
+📝 *Catatan: Harga dapat berubah sesuai dengan kompleksitas tugas
+
+═══════════════════════════════════════
+📝 *DETAIL TUGAS*
+═══════════════════════════════════════
+
+${orderData.details || '(Detail akan dijelaskan lebih lanjut saat berkomunikasi)'}
+
+═══════════════════════════════════════
+
+Mohon konfirmasi dan panduan pembayaran lebih lanjut. 
+Terima kasih telah mempercayai SolusiJoki.id! 🙏`;
 
       const whatsappLink = `https://wa.me/6283153145931?text=${encodeURIComponent(orderSummary)}`;
       window.open(whatsappLink, '_blank');
