@@ -88,6 +88,36 @@
             yang tersedia untuk memudahkan transaksi Anda.</p>
         </div>
 
+        <!-- Payment Timing Options -->
+        <div class="mb-12">
+          <div class="flex justify-center gap-4 flex-wrap md:flex-nowrap">
+            <button onclick="selectPaymentTiming('now')"
+              class="payment-timing-btn flex-1 md:flex-none px-8 py-4 rounded-2xl font-bold text-base transition-all duration-300 border-2 border-success-emerald bg-success-emerald text-white"
+              id="btn-now" data-timing="now">
+              <span class="material-symbols-outlined inline text-[22px] mr-2 align-middle">flash_on</span>
+              Bayar Sekarang
+            </button>
+            <button onclick="selectPaymentTiming('later')"
+              class="payment-timing-btn flex-1 md:flex-none px-8 py-4 rounded-2xl font-bold text-base transition-all duration-300 border-2 border-slate-300 dark:border-slate-600 text-trust-navy dark:text-paper-white hover:border-success-emerald"
+              id="btn-later" data-timing="later">
+              <span class="material-symbols-outlined inline text-[22px] mr-2 align-middle">schedule</span>
+              Bayar Nanti
+            </button>
+          </div>
+        </div>
+
+        <!-- Payment Timing Info Card -->
+        <div id="payment-info-card"
+          class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-2xl p-6 mb-12 space-y-3 transition-all duration-300">
+          <p class="flex items-center gap-2 font-semibold text-blue-900 dark:text-blue-200">
+            <span class="material-symbols-outlined text-[20px]">info</span>
+            <span id="info-title">Pembayaran Langsung</span>
+          </p>
+          <p class="text-sm text-blue-800 dark:text-blue-100" id="info-desc">
+            Lakukan pembayaran segera untuk mempercepat proses pengerjaan tugas Anda. Kami akan langsung memulai mengerjakan setelah konfirmasi pembayaran.
+          </p>
+        </div>
+
         <!-- Payment Methods Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
 
@@ -300,6 +330,7 @@
               <li>✓ Jika transfer via BRI, biaya admin ditanggung pengirim/penerima sesuai bank</li>
               <li>✓ Simpan bukti transfer untuk keperluan verifikasi</li>
               <li>✓ Hubungi admin via WhatsApp jika ada kendala atau pertanyaan</li>
+              <li id="note-timing" class="hidden">✓ Untuk pembayaran nanti, Anda dapat menghubungi admin untuk mengatur jadwal pembayaran yang sesuai</li>
             </ul>
           </div>
         </div>
@@ -340,6 +371,44 @@
   </footer>
 
   <script>
+    // Payment Timing Selection
+    function selectPaymentTiming(timing) {
+      const buttons = document.querySelectorAll('.payment-timing-btn');
+      const infoCard = document.getElementById('payment-info-card');
+      const infoTitle = document.getElementById('info-title');
+      const infoDesc = document.getElementById('info-desc');
+      const noteTiming = document.getElementById('note-timing');
+
+      buttons.forEach(btn => {
+        if (btn.dataset.timing === timing) {
+          btn.classList.remove('border-slate-300', 'dark:border-slate-600', 'text-trust-navy', 'dark:text-paper-white', 'hover:border-success-emerald');
+          btn.classList.add('border-success-emerald', 'bg-success-emerald', 'text-white');
+        } else {
+          btn.classList.remove('border-success-emerald', 'bg-success-emerald', 'text-white');
+          btn.classList.add('border-slate-300', 'dark:border-slate-600', 'text-trust-navy', 'dark:text-paper-white', 'hover:border-success-emerald');
+        }
+      });
+
+      if (timing === 'now') {
+        infoTitle.textContent = 'Pembayaran Langsung';
+        infoDesc.textContent = 'Lakukan pembayaran segera untuk mempercepat proses pengerjaan tugas Anda. Kami akan langsung memulai mengerjakan setelah konfirmasi pembayaran.';
+        noteTiming.classList.add('hidden');
+      } else {
+        infoTitle.textContent = 'Pembayaran Nanti';
+        infoDesc.textContent = 'Anda dapat menunda pembayaran dan mengatur jadwal yang sesuai dengan kebutuhan Anda. Hubungi admin untuk mendiskusikan rincian dan tenggat waktu pembayaran.';
+        noteTiming.classList.remove('hidden');
+      }
+
+      // Save preference to localStorage
+      localStorage.setItem('paymentTiming', timing);
+    }
+
+    // Load saved preference on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTiming = localStorage.getItem('paymentTiming') || 'now';
+      selectPaymentTiming(savedTiming);
+    });
+
     // Copy to Clipboard Function
     function copyToClipboard(elementId) {
       const element = document.getElementById(elementId);
