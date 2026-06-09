@@ -1,290 +1,165 @@
 /**
- * SolusiJoki.id - Core Website Logic
- * Handles cost estimation, theme toggles, accordions, and WhatsApp form submissions.
+ * SolusiJoki.id - Core Application Script
+ * Integrasi Kalkulator Biaya, Form Order, Akordion FAQ, dan Manajemen Tema
  */
 
-// Configuration - easily customizable by the user
+// 1. Konfigurasi Global Biaya yang Ramah Kantong Mahasiswa
 const CONFIG = {
-  whatsappNumber: '6285184852924', // Target WhatsApp number (include country code without +)
-  pricing: {
-    baseRates: {
-      sma: 15000,   // Rate per page for High School (SMA)
-      s1: 25000,    // Rate per page for Undergraduate (S1)
-      s2: 40000     // Rate per page for Postgraduate (S2/S3)
-    },
-    serviceMultipliers: {
-      makalah: 1.0,
-      resume: 0.8,
-      esai: 1.2,
-      lainnya: 1.1
-    },
-    deadlineMultipliers: {
-      standard: 1.0, // > 5 days
-      express: 1.3,  // 2-4 days
-      kilat: 1.7     // < 24 hours
-    }
+  whatsappNumber: '6283153145931', // Nomor WhatsApp Admin Resmi
+  emailTarget: 'nurhidayatbswdayataka23.2@gmail.com', // Email Sementara
+
+  basePricePerPage: {
+    'makalah': 6000,
+    'resume': 5000,
+    'esai': 7000,
+    'lainnya': 9000
+  },
+
+  levelMultiplier: {
+    'sma': 0.85,
+    's1': 1.0,
+    's2': 1.25
+  },
+
+  deadlineMultiplier: {
+    'standard': 1.0,
+    'express': 1.15,
+    'kilat': 1.35
   }
 };
 
+// 2. Inisialisasi Aplikasi Saat DOM Siap
 document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
+  initThemeToggle();
   initMobileNav();
-  initAccordions();
-  initCostCalculator();
+  initPriceCalculator();
   initOrderForm();
+  initFaqAccordion(); // Mengaktifkan interaksi FAQ
   initScrollAnimations();
-  initHeaderScroll();
 });
 
 /**
- * 0. Header Scroll Shadow Effect
+ * 3. Manajemen Tema (Light / Dark Mode)
  */
-function initHeaderScroll() {
-  const header = document.getElementById('site-header');
-  if (!header) return;
+function initThemeToggle() {
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  if (!themeToggleBtn) return;
 
-  const onScroll = () => {
-    if (window.scrollY > 10) {
-      header.classList.add('shadow-lg', 'shadow-slate-300/40', 'dark:shadow-black/30');
-      header.classList.add('bg-white/85', 'dark:bg-slate-900/85');
-      header.classList.remove('bg-white/70', 'dark:bg-slate-900/70');
-    } else {
-      header.classList.remove('shadow-lg', 'shadow-slate-300/40', 'dark:shadow-black/30');
-      header.classList.remove('bg-white/85', 'dark:bg-slate-900/85');
-      header.classList.add('bg-white/70', 'dark:bg-slate-900/70');
-    }
-  };
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // run once on load
-}
-
-/**
- * 1. Dark Mode / Theme Toggle Logic
- */
-function initTheme() {
-  const themeToggles = document.querySelectorAll('.theme-toggle');
-  
-  // Apply saved theme or system preference
-  const savedTheme = localStorage.getItem('theme');
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-  if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+  if (localStorage.getItem('color-theme') === 'dark' ||
+    (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.documentElement.classList.add('dark');
-    updateThemeToggleIcons('dark');
   } else {
     document.documentElement.classList.remove('dark');
-    updateThemeToggleIcons('light');
   }
 
-  themeToggles.forEach(toggle => {
-    toggle.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      updateThemeToggleIcons(isDark ? 'dark' : 'light');
-    });
-  });
-}
-
-function updateThemeToggleIcons(mode) {
-  const themeToggles = document.querySelectorAll('.theme-toggle');
-  themeToggles.forEach(toggle => {
-    const icon = toggle.querySelector('.material-symbols-outlined');
-    if (icon) {
-      icon.textContent = mode === 'dark' ? 'light_mode' : 'dark_mode';
+  themeToggleBtn.addEventListener('click', () => {
+    if (document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('color-theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('color-theme', 'dark');
     }
   });
 }
 
 /**
- * 2. Mobile Navbar Drawer
+ * 4. Kontrol Navigasi Menu Mobile (Drawer)
  */
 function initMobileNav() {
-  const menuBtn = document.getElementById('menu-btn');
-  const closeBtn = document.getElementById('close-menu-btn');
-  const mobileNav = document.getElementById('mobile-nav-drawer');
-  const navLinks = document.querySelectorAll('.mobile-nav-link');
+  const menuToggle = document.getElementById('menu-toggle');
+  const closeMenu = document.getElementById('close-menu');
+  const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
 
-  if (!menuBtn || !mobileNav) return;
+  if (!menuToggle || !mobileNavDrawer) return;
 
   const openDrawer = () => {
-    mobileNav.classList.add('open');
+    mobileNavDrawer.classList.add('open');
     document.body.classList.add('overflow-hidden');
   };
 
   const closeDrawer = () => {
-    mobileNav.classList.remove('open');
+    mobileNavDrawer.classList.remove('open');
     document.body.classList.remove('overflow-hidden');
   };
 
-  menuBtn.addEventListener('click', openDrawer);
-  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  menuToggle.addEventListener('click', openDrawer);
+  if (closeMenu) closeMenu.addEventListener('click', closeDrawer);
 
-  // Close drawer when clicking any link
-  navLinks.forEach(link => {
-    link.addEventListener('click', closeDrawer);
-  });
+  const navLinks = mobileNavDrawer.querySelectorAll('a');
+  navLinks.forEach(link => link.addEventListener('click', closeDrawer));
 }
 
 /**
- * 3. Accordion FAQ Section
+ * 5. Logika Kalkulator Estimasi Biaya (Bergerak Real-time)
  */
-function initAccordions() {
-  const accordionHeaders = document.querySelectorAll('.faq-header');
-
-  accordionHeaders.forEach(header => {
-    header.addEventListener('click', () => {
-      const content = header.nextElementSibling;
-      const icon = header.querySelector('.faq-icon');
-      
-      // Close other accordions
-      accordionHeaders.forEach(otherHeader => {
-        if (otherHeader !== header) {
-          const otherContent = otherHeader.nextElementSibling;
-          const otherIcon = otherHeader.querySelector('.faq-icon');
-          if (otherContent.classList.contains('open')) {
-            otherContent.classList.remove('open');
-            otherContent.style.maxHeight = null;
-            if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
-          }
-        }
-      });
-
-      // Toggle current accordion
-      const isOpen = content.classList.toggle('open');
-      if (isOpen) {
-        content.style.maxHeight = content.scrollHeight + 'px';
-        if (icon) icon.style.transform = 'rotate(180deg)';
-      } else {
-        content.style.maxHeight = null;
-        if (icon) icon.style.transform = 'rotate(0deg)';
-      }
-    });
-  });
-}
-
-/**
- * 4. Cost Calculator Logic
- */
-function initCostCalculator() {
-  const calcLevel = document.getElementById('calc-level');
+function initPriceCalculator() {
   const calcService = document.getElementById('calc-service');
+  const calcLevel = document.getElementById('calc-level');
   const calcPages = document.getElementById('calc-pages');
   const calcDeadline = document.getElementById('calc-deadline');
-  
+
   const pagesValue = document.getElementById('pages-value');
   const calcMinPrice = document.getElementById('calc-min-price');
   const calcMaxPrice = document.getElementById('calc-max-price');
-  
-  const useEstimateBtn = document.getElementById('use-estimate-btn');
 
-  if (!calcLevel || !calcService || !calcPages || !calcDeadline) return;
+  if (!calcService || !calcLevel || !calcPages || !calcDeadline) return;
 
-  // Update slider label on input
-  calcPages.addEventListener('input', () => {
-    if (pagesValue) pagesValue.textContent = calcPages.value;
-    calculate();
-  });
-
-  // Calculate whenever inputs change
-  [calcLevel, calcService, calcDeadline].forEach(elem => {
-    elem.addEventListener('change', calculate);
-  });
-
-  function calculate() {
-    const level = calcLevel.value;
+  function calculatePrice() {
     const service = calcService.value;
+    const level = calcLevel.value;
     const pages = parseInt(calcPages.value) || 1;
     const deadline = calcDeadline.value;
 
-    const baseRate = CONFIG.pricing.baseRates[level] || CONFIG.pricing.baseRates.s1;
-    const serviceMultiplier = CONFIG.pricing.serviceMultipliers[service] || 1.0;
-    const deadlineMultiplier = CONFIG.pricing.deadlineMultipliers[deadline] || 1.0;
+    if (pagesValue) pagesValue.textContent = pages;
 
-    // Calculate base cost range
-    const baseCost = baseRate * serviceMultiplier * deadlineMultiplier * pages;
-    
-    // Create an estimated price range (-5% to +10% for custom project variations)
-    const minPrice = Math.round((baseCost * 0.95) / 1000) * 1000;
-    const maxPrice = Math.round((baseCost * 1.10) / 1000) * 1000;
+    const basePrice = CONFIG.basePricePerPage[service] || 15000;
+    const levelMultiplier = CONFIG.levelMultiplier[level] || 1.0;
+    const deadlineMultiplier = CONFIG.deadlineMultiplier[deadline] || 1.0;
 
-    if (calcMinPrice && calcMaxPrice) {
-      calcMinPrice.textContent = formatCurrency(minPrice);
-      calcMaxPrice.textContent = formatCurrency(maxPrice);
-    }
+    const midPrice = basePrice * pages * levelMultiplier * deadlineMultiplier;
 
-    return { level, service, pages, deadline, minPrice, maxPrice };
+    const minPrice = Math.round((midPrice * 0.9) / 1000) * 1000;
+    const maxPrice = Math.round((midPrice * 1.1) / 1000) * 1000;
+
+    if (calcMinPrice) calcMinPrice.textContent = `Rp ${minPrice.toLocaleString('id-ID')}`;
+    if (calcMaxPrice) calcMaxPrice.textContent = `Rp ${maxPrice.toLocaleString('id-ID')}`;
   }
 
-  // Pre-fill order form with calculated inputs when clicking "Gunakan Estimasi Ini"
+  calcService.addEventListener('change', calculatePrice);
+  calcLevel.addEventListener('change', calculatePrice);
+  calcDeadline.addEventListener('change', calculatePrice);
+  calcPages.addEventListener('input', calculatePrice);
+
+  calculatePrice();
+
+  const useEstimateBtn = document.getElementById('use-estimate-btn');
   if (useEstimateBtn) {
     useEstimateBtn.addEventListener('click', () => {
-      const results = calculate();
-      
-      const formService = document.getElementById('form-service');
-      const formLevel = document.getElementById('form-level');
-      const formPages = document.getElementById('form-pages');
-      const formDeadline = document.getElementById('form-deadline');
+      const orderSection = document.getElementById('order-form');
+      if (orderSection) {
+        orderSection.scrollIntoView({ behavior: 'smooth' });
 
-      if (formService) formService.value = mapServiceValue(results.service);
-      if (formLevel) formLevel.value = mapLevelValue(results.level);
-      if (formPages) formPages.value = results.pages;
-      
-      // Calculate a date target based on deadline speed option
-      if (formDeadline) {
-        const today = new Date();
-        if (results.deadline === 'kilat') {
-          today.setDate(today.getDate() + 1);
-        } else if (results.deadline === 'express') {
-          today.setDate(today.getDate() + 3);
-        } else {
-          today.setDate(today.getDate() + 6);
-        }
-        formDeadline.value = today.toISOString().split('T')[0];
-      }
-
-      // Scroll smoothly to form section
-      const formSection = document.getElementById('order-section');
-      if (formSection) {
-        formSection.scrollIntoView({ behavior: 'smooth' });
+        const formPages = document.getElementById('form-pages');
+        if (formPages) formPages.value = calcPages.value;
       }
     });
   }
-
-  // Run initial calculation
-  calculate();
-}
-
-function formatCurrency(amount) {
-  return 'Rp ' + amount.toLocaleString('id-ID');
-}
-
-// Map calculator values to order form values
-function mapServiceValue(calcService) {
-  const mapping = {
-    makalah: 'Makalah',
-    resume: 'Resume Buku',
-    esai: 'Esai Akademik',
-    lainnya: 'Lainnya'
-  };
-  return mapping[calcService] || 'Makalah';
-}
-
-function mapLevelValue(calcLevel) {
-  const mapping = {
-    sma: 'SMA / Sederajat',
-    s1: 'S1 / Diploma',
-    s2: 'S2 / Master'
-  };
-  return mapping[calcLevel] || 'S1 / Diploma';
 }
 
 /**
- * 5. Order Form Submission to WhatsApp
+ * 6. Validasi & Pengiriman Formulir Pemesanan (Dual Destination)
  */
 function initOrderForm() {
   const orderForm = document.getElementById('order-form');
+  const formDeadline = document.getElementById('form-deadline');
+
   if (!orderForm) return;
+
+  if (formDeadline) {
+    const hariIni = new Date().toISOString().split('T')[0];
+    formDeadline.setAttribute('min', hariIni);
+  }
 
   orderForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -296,79 +171,125 @@ function initOrderForm() {
     const deadline = document.getElementById('form-deadline').value;
     const details = document.getElementById('form-details').value.trim();
 
-    if (!name || !deadline) {
-      alert('Mohon isi nama lengkap dan deadline pengerjaan!');
+    const destinationElement = document.querySelector('input[name="form-destination"]:checked');
+    const destination = destinationElement ? destinationElement.value : 'whatsapp';
+
+    if (!name || name.length < 2) {
+      alert('Mohon masukkan nama lengkap Anda dengan benar!');
       return;
     }
 
-    // Format message
+    if (!deadline) {
+      alert('Mohon tentukan tanggal deadline pengerjaan tugas!');
+      return;
+    }
+
     const formattedDeadline = formatDateString(deadline);
-    const message = `Halo SolusiJoki.id, saya ingin berkonsultasi untuk pemesanan jasa joki tugas:
 
-*Form Pemesanan:*
-• *Nama Lengkap:* ${name}
-• *Jenis Layanan:* ${service}
-• *Jenjang Pendidikan:* ${level}
-• *Jumlah Halaman:* ${pages} Halaman
-• *Deadline Pengerjaan:* ${formattedDeadline}
+    const waMessage = `Halo SolusiJoki.id, saya ingin berkonsultasi untuk pemesanan jasa joki tugas:\n\n` +
+      `*Form Pemesanan:*\n` +
+      `• *Nama Lengkap:* ${name}\n` +
+      `• *Jenis Layanan:* ${service}\n` +
+      `• *Jenjang Pendidikan:* ${level}\n` +
+      `• *Jumlah Halaman:* ${pages} Halaman\n` +
+      `• *Deadline Pengerjaan:* ${formattedDeadline}\n\n` +
+      `*Detail & Deskripsi Tugas:*\n` +
+      `${details ? details : '_(Detail mendalam akan disampaikan langsung saat chat)_'}\n\n` +
+      `Mohon informasi mengenai estimasi harga resmi dan metode pembayarannya. Terima kasih!`;
 
-*Detail & Deskripsi Tugas:*
-${details ? details : '_(Detail disampaikan saat chat)_'}
+    const emailBody = `Halo SolusiJoki.id,\n\nSaya ingin berkonsultasi untuk pemesanan jasa joki tugas dengan detail berikut:\n\n` +
+      `Nama Lengkap: ${name}\n` +
+      `Jenis Layanan: ${service}\n` +
+      `Jenjang Pendidikan: ${level}\n` +
+      `Jumlah Halaman: ${pages} Halaman\n` +
+      `Deadline Pengerjaan: ${formattedDeadline}\n\n` +
+      `Detail & Deskripsi Tugas:\n` +
+      `${details ? details : '(Detail mendalam akan disampaikan saat kelanjutan email)'}\n\n` +
+      `Mohon informasi mengenai estimasi harga resmi beserta metode pembayarannya.\n\nTerima kasih.\n${name}`;
 
-Mohon informasi harga resmi dan metode pembayarannya. Terima kasih!`;
-
-    // Encode message for URL
-    const encodedText = encodeURIComponent(message);
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${CONFIG.whatsappNumber}&text=${encodedText}`;
-
-    // Open WhatsApp
-    window.open(whatsappUrl, '_blank');
+    if (destination === 'whatsapp') {
+      const encodedText = encodeURIComponent(waMessage);
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=${CONFIG.whatsappNumber}&text=${encodedText}`;
+      window.open(whatsappUrl, '_blank');
+    } else if (destination === 'email') {
+      const subject = encodeURIComponent(`Order Jasa Joki - ${name} (${service})`);
+      const encodedBody = encodeURIComponent(emailBody);
+      const mailtoUrl = `mailto:${CONFIG.emailTarget}?subject=${subject}&body=${encodedBody}`;
+      window.location.href = mailtoUrl;
+    }
   });
 
-  // Attach direct WhatsApp contact triggers (for other floating links / buttons)
   const waContactBtns = document.querySelectorAll('.wa-contact-trigger');
   waContactBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const genericMsg = 'Halo SolusiJoki.id, saya tertarik dengan layanan pengerjaan tugas akademik Anda. Bisa bantu saya?';
       const encodedMsg = encodeURIComponent(genericMsg);
+
+      const mobileNav = document.getElementById('mobile-nav-drawer');
+      if (mobileNav && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        document.body.classList.remove('overflow-hidden');
+      }
+
       window.open(`https://api.whatsapp.com/send?phone=${CONFIG.whatsappNumber}&text=${encodedMsg}`, '_blank');
     });
   });
 }
 
-function formatDateString(dateStr) {
-  if (!dateStr) return '-';
-  try {
-    const date = new Date(dateStr);
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return date.toLocaleDateString('id-ID', options);
-  } catch (e) {
-    return dateStr;
-  }
+function formatDateString(dateString) {
+  if (!dateString) return '';
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const date = new Date(dateString);
+  return date.toLocaleDateString('id-ID', options);
 }
 
 /**
- * 6. Smooth Scroll Animations using IntersectionObserver
+ * 7. Kontrol Logika Buka-Tutup Akordion FAQ (Smooth Accordion)
  */
-function initScrollAnimations() {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
+function initFaqAccordion() {
+  const faqHeaders = document.querySelectorAll('.faq-header');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('opacity-100', 'translate-y-0');
-        entry.target.classList.remove('opacity-0', 'translate-y-8');
-        observer.unobserve(entry.target); // Trigger only once
+  faqHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      const content = header.nextElementSibling;
+      const isCurrentlyActive = header.classList.contains('active');
+
+      // TUTUP SEMUA FAQ YANG SEDANG TERBUKA (Efek Akordion Tunggal)
+      faqHeaders.forEach(otherHeader => {
+        otherHeader.classList.remove('active');
+        if (otherHeader.nextElementSibling) {
+          otherHeader.nextElementSibling.style.maxHeight = null;
+        }
+      });
+
+      // JIKA YANG DIKLIK SEBELUMNYA TIDAK AKTIF, MAKA BUKA SEKARANG
+      if (!isCurrentlyActive) {
+        header.classList.add('active');
+        // Gunakan scrollHeight agar tinggi animasi beradaptasi otomatis sesuai teks
+        content.style.maxHeight = content.scrollHeight + "px";
       }
     });
-  }, observerOptions);
-
-  const animatedElements = document.querySelectorAll('.scroll-animate');
-  animatedElements.forEach(el => {
-    el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
-    observer.observe(el);
   });
+}
+
+/**
+ * 8. Animasi Efek Scroll Menggunakan Intersection Observer API
+ */
+function initScrollAnimations() {
+  const animatedElements = document.querySelectorAll('.scroll-animate');
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    animatedElements.forEach(el => observer.observe(el));
+  } else {
+    animatedElements.forEach(el => el.classList.add('animated'));
+  }
 }

@@ -1,3 +1,15 @@
+/* Kontrol Default Konten Akordion */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+/* Rotasi Ikon Indikator saat FAQ Aktif */
+.faq-header.active .faq-icon {
+  transform: rotate(180deg);
+}
+
 /* Style variables and custom utilities */
 :root {
   --primary-navy: #0A192F;
@@ -102,9 +114,17 @@ body {
 
 /* Dynamic floating widget animations */
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .float-animation {

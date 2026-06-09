@@ -98,11 +98,12 @@
         </button>
 
         <!-- Call-to-action (WhatsApp) -->
-        <button
+        <a href="https://wa.me/6283153145931?text=Halo%20SolusiJoki.id%2C%20saya%20tertarik%20dengan%20layanan%20jasa%20tugas%20akademik%20Anda.%20Bisa%20bantu%20saya%3F"
+          target="_blank"
           class="wa-contact-trigger hidden md:flex items-center gap-2 bg-success-emerald hover:bg-accent-emerald-dark text-paper-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-lg shadow-success-emerald/10 scale-95 active:scale-90 transition-all duration-300">
           <span class="material-symbols-outlined text-[18px]">chat</span>
           Hubungi WhatsApp
-        </button>
+        </a>
 
         <!-- Mobile Menu Hamburger Button -->
         <button id="menu-btn"
@@ -139,11 +140,12 @@
       <a class="mobile-nav-link text-lg text-paper-white/90 hover:text-success-emerald transition-colors font-medium border-b border-white/5 pb-2"
         href="#faq-section">FAQ</a>
 
-      <button
+      <a href="https://wa.me/6283153145931?text=Halo%20SolusiJoki.id%2C%20saya%20tertarik%20dengan%20layanan%20jasa%20tugas%20akademik%20Anda.%20Bisa%20bantu%20saya%3F"
+        target="_blank"
         class="wa-contact-trigger flex items-center justify-center gap-2 bg-success-emerald hover:bg-accent-emerald-dark text-paper-white font-semibold text-base py-3.5 rounded-xl transition-all shadow-lg shadow-success-emerald/15">
         <span class="material-symbols-outlined text-[20px]">chat</span>
         Hubungi WhatsApp
-      </button>
+      </a>
     </div>
   </div>
 
@@ -733,10 +735,10 @@
                   Layanan</label>
                 <select id="form-service"
                   class="w-full bg-slate-50 dark:bg-[#121f35] border-slate-200 dark:border-slate-700/60 rounded-xl p-3 focus:ring-2 focus:ring-success-emerald text-sm text-slate-800 dark:text-slate-100 outline-none">
-                  <option>Makalah</option>
-                  <option>Resume Buku</option>
-                  <option>Esai Akademik</option>
-                  <option>Lainnya</option>
+                  <option value="Makalah">Makalah</option>
+                  <option value="Resume Buku">Resume Buku</option>
+                  <option value="Esai Akademik">Esai Akademik</option>
+                  <option value="Lainnya">Lainnya</option>
                 </select>
               </div>
               <div>
@@ -744,9 +746,9 @@
                   Pendidikan</label>
                 <select id="form-level"
                   class="w-full bg-slate-50 dark:bg-[#121f35] border-slate-200 dark:border-slate-700/60 rounded-xl p-3 focus:ring-2 focus:ring-success-emerald text-sm text-slate-800 dark:text-slate-100 outline-none">
-                  <option>SMA / Sederajat</option>
-                  <option selected>S1 / Diploma</option>
-                  <option>S2 / Master</option>
+                  <option value="SMA / Sederajat">SMA / Sederajat</option>
+                  <option value="S1 / Diploma" selected>S1 / Diploma</option>
+                  <option value="S2 / Master">S2 / Master</option>
                 </select>
               </div>
             </div>
@@ -768,6 +770,24 @@
             </div>
 
             <div>
+              <label class="block text-sm font-semibold text-trust-navy dark:text-slate-300 mb-2">Metode Pengiriman
+                Form</label>
+              <div
+                class="flex items-center space-x-6 bg-slate-50 dark:bg-[#121f35] border border-slate-200 dark:border-slate-700/60 rounded-xl p-3">
+                <label class="flex items-center space-x-2 text-sm text-slate-800 dark:text-slate-100 cursor-pointer">
+                  <input type="radio" name="form-destination" value="whatsapp" checked
+                    class="text-success-emerald focus:ring-success-emerald h-4 w-4 border-gray-300">
+                  <span>WhatsApp</span>
+                </label>
+                <label class="flex items-center space-x-2 text-sm text-slate-800 dark:text-slate-100 cursor-pointer">
+                  <input type="radio" name="form-destination" value="email"
+                    class="text-success-emerald focus:ring-success-emerald h-4 w-4 border-gray-300">
+                  <span>Email Resmi</span>
+                </label>
+              </div>
+            </div>
+
+            <div>
               <label class="block text-sm font-semibold text-trust-navy dark:text-slate-300 mb-2">Detail & Deskripsi
                 Tugas</label>
               <textarea id="form-details"
@@ -779,7 +799,7 @@
             <button
               class="w-full bg-success-emerald hover:bg-accent-emerald-dark text-paper-white font-bold text-base py-4 rounded-xl flex items-center justify-center gap-3 transition-all shadow-lg shadow-success-emerald/10 hover:shadow-success-emerald/20"
               type="submit">
-              Kirim via WhatsApp
+              Proses Pemesanan Tugas
               <span class="material-symbols-outlined">send</span>
             </button>
           </form>
@@ -914,8 +934,8 @@
         <div class="flex flex-col space-y-3 text-sm text-white/70">
           <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-[18px] text-success-emerald">chat</span>
-            <a href="https://api.whatsapp.com/send?phone=6285184852924" target="_blank"
-              class="hover:underline hover:text-success-emerald">+62 851-8485-2924</a>
+            <a href="https://wa.me/6283153145931" target="_blank" class="hover:underline hover:text-success-emerald">+62
+              831-5314-5931</a>
           </div>
           <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-[18px] text-success-emerald">mail</span>
@@ -928,7 +948,7 @@
   </footer>
 
   <!-- Floating WhatsApp Chat Widget -->
-  <a href="https://api.whatsapp.com/send?phone=6285184852924&text=Halo%20SolusiJoki.id%2C%20saya%20tertarik%20dengan%20layanan%20jasa%20tugas%20akademik%20Anda.%20Bisa%20bantu%20saya%3F"
+  <a href="https://wa.me/6283153145931?text=Halo%20SolusiJoki.id%2C%20saya%20tertarik%20dengan%20layanan%20jasa%20tugas%20akademik%20Anda.%20Bisa%20bantu%20saya%3F"
     target="_blank"
     class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-success-emerald text-paper-white rounded-full shadow-2xl hover:bg-accent-emerald-dark transition-all hover:scale-105 active:scale-95 float-animation"
     aria-label="Chat with Admin">
