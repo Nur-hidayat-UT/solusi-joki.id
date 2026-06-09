@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
  * 3. Manajemen Tema (Light / Dark Mode) - Default Mode Terang
  */
 function initThemeToggle() {
-  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeToggleBtn = document.querySelector('.theme-toggle');
   if (!themeToggleBtn) return;
 
   const themeIcon = themeToggleBtn.querySelector('.material-symbols-outlined') || themeToggleBtn;
