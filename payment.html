@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="description"
+    content="SolusiJoki.id - Metode Pembayaran Pembayaran Dana dan BRI untuk layanan jasa tugas akademik." />
+  <title>Metode Pembayaran - SolusiJoki.id</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet" />
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "trust-navy": "#0A192F",
+            "success-emerald": "#10B981",
+            "slate-gray": "#475569",
+            "paper-white": "#FFFFFF",
+            "soft-grey": "#F8FAFC",
+            "accent-emerald-dark": "#059669",
+            "navy-light": "#172A45"
+          }
+        }
+      }
+    }
+  </script>
+  <script>
+    const savedTheme = localStorage.getItem('color-theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="overflow-x-hidden antialiased transition-colors-all">
+
+  <!-- Header Section -->
+  <header id="site-header"
+    class="sticky top-0 z-50 w-full bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-slate-200/50 dark:border-white/5 transition-all duration-300">
+    <nav class="flex justify-between items-center w-full px-6 md:px-12 py-4 max-w-7xl mx-auto">
+      <a class="flex items-center gap-3 group" href="index.html">
+        <img alt="SolusiJoki.id Logo"
+          class="h-12 w-12 object-contain rounded-lg transition-transform group-hover:scale-110"
+          src="assets/img/Only-logo-removebg-preview.png" />
+        <div class="flex items-baseline gap-0.5 font-extrabold text-xl md:text-2xl tracking-tight leading-none">
+          <span class="text-trust-navy dark:text-paper-white">SolusiJoki</span>
+          <span class="text-success-emerald">.id</span>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-4">
+        <button id="theme-toggle"
+          class="theme-toggle p-2 text-slate-600 dark:text-slate-300 hover:text-success-emerald transition-colors rounded-lg hover:bg-slate-500/10"
+          aria-label="Toggle Theme">
+          <span class="material-symbols-outlined text-[22px]">dark_mode</span>
+        </button>
+        <a href="index.html"
+          class="hidden md:flex items-center gap-2 bg-success-emerald hover:bg-accent-emerald-dark text-paper-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-lg transition-all">
+          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          Kembali
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Payment Methods Section -->
+    <section class="py-20 px-6 md:px-12 bg-paper-white dark:bg-[#09111e]">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16 space-y-4">
+          <h1 class="text-4xl md:text-5xl font-extrabold text-trust-navy dark:text-paper-white">Metode Pembayaran</h1>
+          <p class="text-base text-slate-gray dark:text-slate-400 max-w-2xl mx-auto">Pilih salah satu metode pembayaran
+            yang tersedia untuk memudahkan transaksi Anda.</p>
+        </div>
+
+        <!-- Payment Methods Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+
+          <!-- Dana Payment Card -->
+          <div
+            class="bg-slate-50 dark:bg-[#0c1628] border-2 border-slate-200 dark:border-slate-800/80 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all hover:border-success-emerald">
+            <div class="space-y-6">
+              <!-- Dana Header -->
+              <div class="flex items-center gap-4">
+                <div class="w-16 h-16 bg-success-emerald/10 rounded-2xl flex items-center justify-center">
+                  <span class="material-symbols-outlined text-4xl text-success-emerald">account_balance_wallet</span>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-bold text-trust-navy dark:text-paper-white">Dana</h2>
+                  <p class="text-sm text-slate-gray dark:text-slate-400">E-Wallet Terpercaya</p>
+                </div>
+              </div>
+
+              <!-- Dana Info -->
+              <div class="bg-white dark:bg-[#0f1820] rounded-2xl p-6 space-y-4">
+                <div class="border-b border-slate-200 dark:border-slate-700/50 pb-4">
+                  <p class="text-sm text-slate-gray dark:text-slate-400 mb-2">Nomor Dana:</p>
+                  <div class="flex items-center justify-between gap-3">
+                    <input type="text" value="083153145931" readonly
+                      class="flex-1 bg-slate-100 dark:bg-[#121f35] border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-3 font-semibold text-slate-800 dark:text-slate-200 text-sm"
+                      id="dana-number" />
+                    <button onclick="copyToClipboard('dana-number')"
+                      class="bg-success-emerald hover:bg-accent-emerald-dark text-white px-4 py-3 rounded-xl transition-all flex items-center gap-2 font-semibold text-sm"
+                      title="Salin Nomor">
+                      <span class="material-symbols-outlined text-[18px]">content_copy</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Keuntungan -->
+                <div class="space-y-3">
+                  <p class="text-sm font-semibold text-trust-navy dark:text-slate-300">Keuntungan Dana:</p>
+                  <ul class="space-y-2 text-sm">
+                    <li class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+                      <span class="material-symbols-outlined text-success-emerald text-[18px]">check_circle</span>
+                      Transaksi Instan & Aman
+                    </li>
+                    <li class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+                      <span class="material-symbols-outlined text-success-emerald text-[18px]">check_circle</span>
+                      Biaya Admin Rendah
+                    </li>
+                    <li class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+                      <span class="material-symbols-outlined text-success-emerald text-[18px]">check_circle</span>
+                      Tersedia di Semua Perangkat
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <a href="https://dana.id" target="_blank"
+                class="w-full py-3 bg-success-emerald hover:bg-accent-emerald-dark text-paper-white font-bold rounded-xl text-center transition-all flex items-center justify-center gap-2">
+                Buka Aplikasi Dana
+                <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- BRI Bank Card -->
+          <div
+            class="bg-slate-50 dark:bg-[#0c1628] border-2 border-slate-200 dark:border-slate-800/80 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all hover:border-success-emerald">
+            <div class="space-y-6">
+              <!-- BRI Header -->
+              <div class="flex items-center gap-4">
+                <div class="w-16 h-16 bg-success-emerald/10 rounded-2xl flex items-center justify-center">
+                  <span class="material-symbols-outlined text-4xl text-success-emerald">credit_card</span>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-bold text-trust-navy dark:text-paper-white">Bank BRI</h2>
+                  <p class="text-sm text-slate-gray dark:text-slate-400">Transfer Bank Terpercaya</p>
+                </div>
+              </div>
+
+              <!-- BRI Info -->
+              <div class="bg-white dark:bg-[#0f1820] rounded-2xl p-6 space-y-4">
+                <div class="border-b border-slate-200 dark:border-slate-700/50 pb-4">
+                  <p class="text-sm text-slate-gray dark:text-slate-400 mb-2">Nomor Rekening BRI:</p>
+                  <div class="flex items-center justify-between gap-3">
+                    <input type="text" value="4782456127945" readonly
+                      class="flex-1 bg-slate-100 dark:bg-[#121f35] border border-slate-300 dark:border-slate-600 rounded-xl px-4 py-3 font-semibold text-slate-800 dark:text-slate-200 text-sm"
+                      id="bri-number" />
+                    <button onclick="copyToClipboard('bri-number')"
+                      class="bg-success-emerald hover:bg-accent-emerald-dark text-white px-4 py-3 rounded-xl transition-all flex items-center gap-2 font-semibold text-sm"
+                      title="Salin Nomor Rekening">
+                      <span class="material-symbols-outlined text-[18px]">content_copy</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4 space-y-2">
+                  <p class="text-xs text-blue-900 dark:text-blue-200 font-semibold">Informasi Rekening:</p>
+                  <p class="text-sm text-blue-800 dark:text-blue-100 font-medium">Atas Nama: PT SolusiJoki Indonesia</p>
+                </div>
+
+                <!-- Keuntungan -->
+                <div class="space-y-3">
+                  <p class="text-sm font-semibold text-trust-navy dark:text-slate-300">Keuntungan BRI:</p>
+                  <ul class="space-y-2 text-sm">
+                    <li class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+                      <span class="material-symbols-outlined text-success-emerald text-[18px]">check_circle</span>
+                      Transfer Antar Bank Mudah
+                    </li>
+                    <li class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+                      <span class="material-symbols-outlined text-success-emerald text-[18px]">check_circle</span>
+                      Keamanan Terjamin
+                    </li>
+                    <li class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+                      <span class="material-symbols-outlined text-success-emerald text-[18px]">check_circle</span>
+                      Konfirmasi Transfer Otomatis
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <a href="https://www.bri.co.id" target="_blank"
+                class="w-full py-3 bg-success-emerald hover:bg-accent-emerald-dark text-paper-white font-bold rounded-xl text-center transition-all flex items-center justify-center gap-2">
+                Buka Website BRI
+                <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Instructions Section -->
+        <div class="bg-slate-50 dark:bg-[#0c1628] border border-slate-200 dark:border-slate-800/80 rounded-3xl p-8 space-y-8">
+          <h3 class="text-2xl font-bold text-trust-navy dark:text-paper-white">Petunjuk Pembayaran</h3>
+
+          <!-- Dana Instructions -->
+          <div class="space-y-4">
+            <h4 class="text-lg font-bold text-trust-navy dark:text-slate-200">1. Cara Transfer via Dana:</h4>
+            <ol class="space-y-3 ml-4">
+              <li class="flex gap-3 text-slate-700 dark:text-slate-300">
+                <span class="font-bold text-success-emerald">1.</span>
+                <span>Buka aplikasi Dana di smartphone Anda</span>
+              </li>
+              <li class="flex gap-3 text-slate-700 dark:text-slate-300">
+                <span class="font-bold text-success-emerald">2.</span>
+                <span>Pilih menu "Transfer" → "Transfer Dana" atau "Kirim ke Dana"</span>
+              </li>
+              <li class="flex gap-3 text-slate-700 dark:text-slate-300">
+                <span class="font-bold text-success-emerald">3.</span>
+                <span>Masukkan nomor Dana penerima: <strong>083153145931</strong></span>
+              </li>
+              <li class="flex gap-3 text-slate-700 dark:text-slate-300">
+                <span class="font-bold text-success-emerald">4.</span>
+                <span>Isikan nominal sesuai perkiraan biaya yang disepakati</span>
+              </li>
+              <li class="flex gap-3 text-slate-700 dark:text-slate-300">
+                <span class="font-bold text-success-emerald">5.</span>
+                <span>Masukkan PIN Dana dan tunggu konfirmasi (biasanya 1-2 menit)</span>
+              </li>
+              <li class="flex gap-3 text-slate-700 dark:text-slate-300">
+                <span class="font-bold text-success-emerald">6.</span>
+                <span>Screenshot bukti transfer dan kirim ke admin via WhatsApp</span>
+              </li>
+            </ol>
+          </div>
+
+          <div class="border-t border-slate-200 dark:border-slate-700/50 my-6"></div>
+
+          <!-- BRI Instructions -->
+          <div class="space-y-4">
+            <h4 class="text-lg font-bold text-trust-navy dark:text-slate-200">2. Cara Transfer via BRI:</h4>
+            <ol class="space-y-3 ml-4">
+              <li class="flex gap-3 text-slate-700 dark:text-slate-300">
+                <span class="font-bold text-success-emerald">1.</span>
+                <span>Buka aplikasi BRI Mobile atau datang ke ATM BRI</span>
+              </li>
+              <li class="flex gap-3 text-slate-700 dark:text-slate-300">
+                <span class="font-bold text-success-emerald">2.</span>
+                <span>Pilih menu "Transfer" → "Transfer ke Rekening BRI"</span>
+              </li>
+              <li class="flex gap-3 text-slate-700 dark:text-slate-300">
+                <span class="font-bold text-success-emerald">3.</span>
+                <span>Masukkan nomor rekening BRI: <strong>4782456127945</strong></span>
+              </li>
+              <li class="flex gap-3 text-slate-700 dark:text-slate-300">
+                <span class="font-bold text-success-emerald">4.</span>
+                <span>Nama penerima akan muncul di layar - pastikan sesuai</span>
+              </li>
+              <li class="flex gap-3 text-slate-700 dark:text-slate-300">
+                <span class="font-bold text-success-emerald">5.</span>
+                <span>Isikan nominal pembayaran sesuai kesepakatan</span>
+              </li>
+              <li class="flex gap-3 text-slate-700 dark:text-slate-300">
+                <span class="font-bold text-success-emerald">6.</span>
+                <span>Konfirmasi dan masukkan PIN/kartu ATM Anda</span>
+              </li>
+              <li class="flex gap-3 text-slate-700 dark:text-slate-300">
+                <span class="font-bold text-success-emerald">7.</span>
+                <span>Catat nomor referensi transfer dan konfirmasi ke admin</span>
+              </li>
+            </ol>
+          </div>
+
+          <div class="border-t border-slate-200 dark:border-slate-700/50 my-6"></div>
+
+          <!-- Important Notes -->
+          <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-2xl p-6 space-y-3">
+            <p class="flex items-center gap-2 font-semibold text-yellow-900 dark:text-yellow-200">
+              <span class="material-symbols-outlined text-[20px]">info</span>
+              Catatan Penting
+            </p>
+            <ul class="space-y-2 text-sm text-yellow-800 dark:text-yellow-100 ml-8">
+              <li>✓ Konfirmasi pembayaran secara real-time untuk mempercepat proses pengerjaan</li>
+              <li>✓ Jika transfer via BRI, biaya admin ditanggung pengirim/penerima sesuai bank</li>
+              <li>✓ Simpan bukti transfer untuk keperluan verifikasi</li>
+              <li>✓ Hubungi admin via WhatsApp jika ada kendala atau pertanyaan</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- WhatsApp Contact -->
+        <div class="mt-12 text-center space-y-4">
+          <p class="text-slate-gray dark:text-slate-400">Masih ada pertanyaan tentang metode pembayaran?</p>
+          <a href="https://wa.me/6283153145931?text=Halo%20SolusiJoki.id%2C%20saya%20mau%20bertanya%20tentang%20metode%20pembayaran%20Dana%20dan%20BRI"
+            target="_blank"
+            class="inline-flex items-center justify-center gap-3 bg-success-emerald hover:bg-accent-emerald-dark text-paper-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all">
+            <span class="material-symbols-outlined text-[22px]">chat</span>
+            Hubungi Admin via WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-trust-navy dark:bg-[#060d18] text-white border-t border-white/5 mt-20">
+    <div class="flex flex-col md:flex-row justify-between items-start px-6 md:px-12 py-16 w-full max-w-7xl mx-auto gap-12">
+      <div class="space-y-4 max-w-xs">
+        <div class="flex items-center gap-2">
+          <img alt="SolusiJoki.id" class="h-8 w-auto object-contain" src="assets/img/Only-logo-removebg-preview.png" />
+          <span class="font-bold text-xl">SolusiJoki<span class="text-success-emerald">.id</span></span>
+        </div>
+        <p class="text-sm text-white/60">Layanan bantuan pengerjaan tugas akademik terpercaya sejak 2018.</p>
+      </div>
+
+      <div class="space-y-4">
+        <h4 class="text-sm font-semibold uppercase text-success-emerald">Kontak</h4>
+        <div class="flex flex-col space-y-3 text-sm text-white/70">
+          <a href="https://wa.me/6283153145931" target="_blank" class="hover:text-success-emerald">+62 831-5314-5931</a>
+          <a href="mailto:support@solusijoki.id" class="hover:text-success-emerald">support@solusijoki.id</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Copy to Clipboard Function
+    function copyToClipboard(elementId) {
+      const element = document.getElementById(elementId);
+      const text = element.value;
+
+      navigator.clipboard.writeText(text).then(() => {
+        // Show feedback
+        const button = event.target.closest('button');
+        const originalHTML = button.innerHTML;
+        button.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span>';
+        button.classList.add('bg-green-600');
+
+        setTimeout(() => {
+          button.innerHTML = originalHTML;
+          button.classList.remove('bg-green-600');
+        }, 2000);
+      }).catch(err => {
+        alert('Gagal menyalin: ' + err);
+      });
+    }
+
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+      });
+    }
+  </script>
+</body>
+
+</html>
