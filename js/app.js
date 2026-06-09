@@ -204,37 +204,23 @@ function initOrderForm() {
 
     const formattedDeadline = formatDateString(deadline);
 
-    const waMessage = `Halo SolusiJoki.id, saya ingin berkonsultasi untuk pemesanan jasa joki tugas:\n\n` +
-      `*Form Pemesanan:*\n` +
-      `• *Nama Lengkap:* ${name}\n` +
-      `• *Jenis Layanan:* ${service}\n` +
-      `• *Jenjang Pendidikan:* ${level}\n` +
-      `• *Jumlah Halaman:* ${pages} Halaman\n` +
-      `• *Deadline Pengerjaan:* ${formattedDeadline}\n\n` +
-      `*Detail & Deskripsi Tugas:*\n` +
-      `${details ? details : '_(Detail mendalam akan disampaikan langsung saat chat)_'}\n\n` +
-      `Mohon informasi mengenai estimasi harga resmi dan metode pembayarannya. Terima kasih!`;
+    // ✅ PERBAIKAN: Simpan data ke sessionStorage dan arahkan ke payment.html
+    const orderData = {
+      name: name,
+      service: service,
+      level: level,
+      pages: pages,
+      deadline: deadline,
+      formattedDeadline: formattedDeadline,
+      details: details,
+      destination: destination
+    };
 
-    const emailBody = `Halo SolusiJoki.id,\n\nSaya ingin berkonsultasi untuk pemesanan jasa joki tugas dengan detail berikut:\n\n` +
-      `Nama Lengkap: ${name}\n` +
-      `Jenis Layanan: ${service}\n` +
-      `Jenjang Pendidikan: ${level}\n` +
-      `Jumlah Halaman: ${pages} Halaman\n` +
-      `Deadline Pengerjaan: ${formattedDeadline}\n\n` +
-      `Detail & Deskripsi Tugas:\n` +
-      `${details ? details : '(Detail mendalam akan disampaikan saat kelanjutan email)'}\n\n` +
-      `Mohon informasi mengenai estimasi harga resmi beserta metode pembayarannya.\n\nTerima kasih.\n${name}`;
+    // Simpan data ke sessionStorage
+    sessionStorage.setItem('orderData', JSON.stringify(orderData));
 
-    if (destination === 'whatsapp') {
-      const encodedText = encodeURIComponent(waMessage);
-      const whatsappUrl = `https://api.whatsapp.com/send?phone=${CONFIG.whatsappNumber}&text=${encodedText}`;
-      window.open(whatsappUrl, '_blank');
-    } else if (destination === 'email') {
-      const subject = encodeURIComponent(`Order Jasa Joki - ${name} (${service})`);
-      const encodedBody = encodeURIComponent(emailBody);
-      const mailtoUrl = `mailto:${CONFIG.emailTarget}?subject=${subject}&body=${encodedBody}`;
-      window.location.href = mailtoUrl;
-    }
+    // Arahkan ke halaman payment
+    window.location.href = 'payment.html';
   });
 
   const waContactBtns = document.querySelectorAll('.wa-contact-trigger');
