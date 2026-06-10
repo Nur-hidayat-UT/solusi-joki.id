@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description"
+        content="Daftar Tim Ahli dan Penjoki Profesional SolusiJoki.id - Lihat keahlian dan portofolio akademisi terbaik kami." />
+    <title>Tim Ahli & Portofolio - SolusiJoki.id</title>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols Outlined -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "trust-navy": "#0A192F",
+                        "success-emerald": "#10B981",
+                        "slate-gray": "#475569",
+                        "paper-white": "#FFFFFF",
+                        "soft-grey": "#F8FAFC",
+                        "accent-emerald-dark": "#059669",
+                        "navy-light": "#172A45"
+                    },
+                    borderRadius: {
+                        "sm": "0.125rem",
+                        "DEFAULT": "0.25rem",
+                        "md": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="overflow-x-hidden antialiased transition-colors-all min-h-screen flex flex-col">
+
+    <script>
+        // Inline script pengaman dark mode agar tidak kaget saat refresh halaman
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+
+    <div id="navbar-placeholder" class="sticky top-0 z-50"></div>
+
+    <main class="flex-grow py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span
+                    class="text-success-emerald font-semibold text-sm uppercase tracking-wider px-3 py-1 bg-success-emerald/10 rounded-full">Tim
+                    Kreatif & Akademisi</span>
+                <h1
+                    class="text-3xl sm:text-4xl font-extrabold text-trust-navy dark:text-paper-white mt-3 tracking-tight">
+                    Pilih Talent Berdasarkan Keahlian Tugas Anda
+                </h1>
+                <p class="text-slate-gray dark:text-slate-400 mt-4 text-lg">
+                    Seluruh tim kami merupakan lulusan dan mahasiswa tingkat akhir berkompeten yang siap memberikan
+                    hasil pengerjaan kualitas terbaik, orisinal, dan lulus uji Turnitin.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div
+                    class="glass-card ambient-shadow rounded-2xl p-6 flex flex-col items-center text-center transition-all duration-300">
+                    <div
+                        class="w-24 h-24 rounded-full overflow-hidden border-4 border-success-emerald/30 mb-4 shadow-inner">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
+                            alt="Rian Hidayat" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold text-trust-navy dark:text-paper-white">Rian Hidayat, S.Kom.</h3>
+                    <span
+                        class="text-sm text-success-emerald font-medium px-2.5 py-0.5 bg-success-emerald/10 rounded-full mt-1">IT
+                        & Soshum Specialist</span>
+                    <p class="text-sm text-slate-gray dark:text-slate-400 mt-3 flex-grow">
+                        Ahli dalam penulisan esai bidang teknologi informasi, pengerjaan koding web dasar (HTML/CSS/JS),
+                        serta resume jurnal ilmiah soshum.
+                    </p>
+                    <button onclick="openPortfolio('talent-1')"
+                        class="mt-5 w-full bg-trust-navy dark:bg-slate-800 text-white dark:text-slate-200 hover:bg-success-emerald dark:hover:bg-success-emerald py-2.5 px-4 rounded-xl font-medium text-sm transition-all shadow-sm flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">visibility</span> Lihat Portofolio
+                    </button>
+                </div>
+
+                <div
+                    class="glass-card ambient-shadow rounded-2xl p-6 flex flex-col items-center text-center transition-all duration-300">
+                    <div
+                        class="w-24 h-24 rounded-full overflow-hidden border-4 border-success-emerald/30 mb-4 shadow-inner">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80"
+                            alt="Siti Aminah" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold text-trust-navy dark:text-paper-white">Siti Aminah, S.H.</h3>
+                    <span
+                        class="text-sm text-success-emerald font-medium px-2.5 py-0.5 bg-success-emerald/10 rounded-full mt-1">Hukum
+                        & Humaniora</span>
+                    <p class="text-sm text-slate-gray dark:text-slate-400 mt-3 flex-grow">
+                        Spesialis pembuatan makalah hukum tata negara, hukum perdata/agraria, analisis studi kasus
+                        hukum, serta penulisan esai kritis sosiologi.
+                    </p>
+                    <button onclick="openPortfolio('talent-2')"
+                        class="mt-5 w-full bg-trust-navy dark:bg-slate-800 text-white dark:text-slate-200 hover:bg-success-emerald dark:hover:bg-success-emerald py-2.5 px-4 rounded-xl font-medium text-sm transition-all shadow-sm flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">visibility</span> Lihat Portofolio
+                    </button>
+                </div>
+
+                <div
+                    class="glass-card ambient-shadow rounded-2xl p-6 flex flex-col items-center text-center transition-all duration-300">
+                    <div
+                        class="w-24 h-24 rounded-full overflow-hidden border-4 border-success-emerald/30 mb-4 shadow-inner">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
+                            alt="Fajar Nugraha" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold text-trust-navy dark:text-paper-white">Fajar Nugraha, M.Pd.</h3>
+                    <span
+                        class="text-sm text-success-emerald font-medium px-2.5 py-0.5 bg-success-emerald/10 rounded-full mt-1">Edukasi
+                        & Bahasa</span>
+                    <p class="text-sm text-slate-gray dark:text-slate-400 mt-3 flex-grow">
+                        Sangat berpengalaman dalam merangkum (resume) buku tebal, menyusun modul pembelajaran/RPP,
+                        makalah keguruan, dan translate abstrak jurnal Inggris-Indonesia.
+                    </p>
+                    <button onclick="openPortfolio('talent-3')"
+                        class="mt-5 w-full bg-trust-navy dark:bg-slate-800 text-white dark:text-slate-200 hover:bg-success-emerald dark:hover:bg-success-emerald py-2.5 px-4 rounded-xl font-medium text-sm transition-all shadow-sm flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">visibility</span> Lihat Portofolio
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <div id="portfolio-modal"
+        class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-all duration-300">
+        <div
+            class="bg-white dark:bg-slate-800 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden transform scale-95 transition-all max-h-[90vh] flex flex-col border border-slate-100 dark:border-slate-700">
+
+            <div
+                class="p-5 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-soft-grey dark:bg-slate-800/50">
+                <div class="flex items-center gap-3">
+                    <div id="modal-avatar" class="w-10 h-10 rounded-full overflow-hidden"></div>
+                    <div>
+                        <h4 id="modal-name"
+                            class="font-bold text-lg text-trust-navy dark:text-paper-white leading-tight">Nama Penjoki
+                        </h4>
+                        <p id="modal-badge" class="text-xs text-success-emerald font-semibold">Keahlian</p>
+                    </div>
+                </div>
+                <button onclick="closePortfolio()"
+                    class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto space-y-6 text-slate-gray dark:text-slate-300">
+                <div>
+                    <h5 class="text-sm font-semibold uppercase text-trust-navy dark:text-slate-400 tracking-wider mb-3">
+                        Riwayat Pekerjaan & Proyek Sukses</h5>
+                    <ul id="modal-list" class="space-y-3">
+                    </ul>
+                </div>
+
+                <div
+                    class="p-4 bg-emerald-50 dark:bg-emerald-950/30 rounded-xl border border-emerald-100 dark:border-emerald-900/50 flex gap-3 items-start">
+                    <span class="material-symbols-outlined text-success-emerald">verified_user</span>
+                    <p class="text-xs text-emerald-800 dark:text-emerald-300 leading-relaxed">
+                        Semua proyek yang dikerjakan oleh talent ini mendapatkan jaminan bebas plagiarisme (lolos cek
+                        Turnitin di bawah 15%) dan dikerjakan penuh sesuai instruksi pengerjaan Anda.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

@@ -1,6 +1,7 @@
 /**
  * SolusiJoki.id - Core Application Script
  * Integrasi Kalkulator Biaya, Form Order, Akordion FAQ, dan Manajemen Tema
+ * (Versi Asinkronus Modular - Bebas Bug)
  */
 
 // 1. Konfigurasi Global Biaya yang Ramah Kantong Mahasiswa
@@ -28,21 +29,41 @@ const CONFIG = {
   }
 };
 
-// 2. Inisialisasi Aplikasi Saat DOM Siap
-document.addEventListener('DOMContentLoaded', () => {
+// 2. Inisialisasi Aplikasi Saat DOM Siap (Menggunakan Async/Await agar Komponen Terisi Dulu)
+document.addEventListener('DOMContentLoaded', async () => {
+  // Muat komponen HTML eksternal terlebih dahulu ke placeholder masing-masing
+  await loadComponent('navbar-placeholder', 'components/navbar.html');
+  await loadComponent('footer-placeholder', 'components/footer.html');
+
+  // Setelah komponen navbar & footer terpasang di DOM, baru aktifkan fiturnya
   initThemeToggle();
   initMobileNav();
   initPriceCalculator();
   initOrderForm();
-  initFaqAccordion(); // Mengaktifkan interaksi FAQ
+  initFaqAccordion();
   initScrollAnimations();
 });
 
+// PERBAIKAN: Fungsi Pemuat Komponen HTML Modular (Fetch Engine)
+async function loadComponent(placeholderId, componentPath) {
+  const placeholder = document.getElementById(placeholderId);
+  if (!placeholder) return; // Lewati jika halaman tidak butuh komponen ini (misal di payment.html)
+
+  try {
+    const response = await fetch(componentPath);
+    if (!response.ok) throw new Error(`Gagal memuat: ${response.statusText}`);
+    const htmlText = await response.text();
+    placeholder.innerHTML = htmlText;
+  } catch (error) {
+    console.error(`Error loading ${componentPath}:`, error);
+  }
+}
+
 /**
- * 3. Manajemen Tema (Light / Dark Mode) - Default Mode Terang
+ * 3. Manajemen Tema (Light / Dark Mode)
  */
 function initThemeToggle() {
-  const themeToggleBtn = document.querySelector('.theme-toggle');
+  const themeToggleBtn = document.getElementById('theme-toggle');
   if (!themeToggleBtn) return;
 
   const themeIcon = themeToggleBtn.querySelector('.material-symbols-outlined') || themeToggleBtn;
@@ -50,26 +71,23 @@ function initThemeToggle() {
   function syncThemeVisual() {
     const isDark = document.documentElement.classList.contains('dark');
     if (isDark) {
-      if (themeIcon && themeIcon.textContent) themeIcon.textContent = 'light_mode'; // Ikon matahari saat gelap
+      if (themeIcon) themeIcon.textContent = 'light_mode';
     } else {
-      if (themeIcon && themeIcon.textContent) themeIcon.textContent = 'dark_mode';  // Ikon bulan saat terang
+      if (themeIcon) themeIcon.textContent = 'dark_mode';
     }
   }
 
-  // 1. Cek memori penyimpanan browser
+  // Cek memori penyimpanan browser
   const savedTheme = localStorage.getItem('color-theme');
   if (savedTheme === 'dark') {
     document.documentElement.classList.add('dark');
   } else {
-    // Selalu paksa masuk mode terang jika tidak ada riwayat memilih mode gelap
     document.documentElement.classList.remove('dark');
     localStorage.setItem('color-theme', 'light');
   }
 
-  // Jalankan penyesuaian visual ikon tombol
   syncThemeVisual();
 
-  // 2. Aksi tombol penukar tema ketika diklik
   themeToggleBtn.addEventListener('click', () => {
     if (document.documentElement.classList.contains('dark')) {
       document.documentElement.classList.remove('dark');
@@ -81,6 +99,7 @@ function initThemeToggle() {
     syncThemeVisual();
   });
 }
+
 /**
  * 4. Kontrol Navigasi Menu Mobile (Drawer)
  */
@@ -93,11 +112,13 @@ function initMobileNav() {
 
   const openDrawer = () => {
     mobileNavDrawer.classList.add('open');
+    mobileNavDrawer.classList.remove('translate-x-full'); // Menampilkan drawer Tailwind
     document.body.classList.add('overflow-hidden');
   };
 
   const closeDrawer = () => {
     mobileNavDrawer.classList.remove('open');
+    mobileNavDrawer.classList.add('translate-x-full'); // Menyembunyikan drawer Tailwind
     document.body.classList.remove('overflow-hidden');
   };
 
@@ -109,7 +130,7 @@ function initMobileNav() {
 }
 
 /**
- * 5. Logika Kalkulator Estimasi Biaya (Bergerak Real-time)
+ * 5. Logika Kalkulator Estimasi Biaya (Real-time)
  */
 function initPriceCalculator() {
   const calcService = document.getElementById('calc-service');
@@ -131,7 +152,7 @@ function initPriceCalculator() {
 
     if (pagesValue) pagesValue.textContent = pages;
 
-    const basePrice = CONFIG.basePricePerPage[service] || 15000;
+    const basePrice = CONFIG.basePricePerPage[service] || 9000;
     const levelMultiplier = CONFIG.levelMultiplier[level] || 1.0;
     const deadlineMultiplier = CONFIG.deadlineMultiplier[deadline] || 1.0;
 
@@ -160,100 +181,76 @@ function initPriceCalculator() {
 
         const formPages = document.getElementById('form-pages');
         if (formPages) formPages.value = calcPages.value;
+
+        const formService = document.getElementById('form-service');
+        if (formService && calcService) {
+          Array.from(formService.options).forEach(opt => {
+            if (opt.value.toLowerCase().includes(calcService.value) || 
+               (calcService.value === 'esai' && opt.value.toLowerCase().includes('esai'))) {
+              opt.selected = true;
+            }
+          });
+        }
+
+        const formLevel = document.getElementById('form-level');
+        if (formLevel && calcLevel) {
+          Array.from(formLevel.options).forEach(opt => {
+            if (opt.value.toLowerCase().includes(calcLevel.value)) {
+              opt.selected = true;
+            }
+          });
+        }
+
+        const formDeadline = document.getElementById('form-deadline');
+        if (formDeadline && calcDeadline) {
+          const today = new Date();
+          let addDays = 7;
+          if (calcDeadline.value === 'kilat') addDays = 1;
+          else if (calcDeadline.value === 'express') addDays = 3;
+          today.setDate(today.getDate() + addDays);
+          formDeadline.value = today.toISOString().split('T')[0];
+        }
       }
     });
   }
 }
 
 /**
- * 6. Validasi & Pengiriman Formulir Pemesanan (Dual Destination)
+ * 6. Validasi & Pengiriman Formulir Pemesanan
  */
 function initOrderForm() {
-  const orderForm = document.getElementById('order-form');
-  const formDeadline = document.getElementById('form-deadline');
+  const form = document.getElementById('order-form');
+  if (!form) return;
 
-  if (!orderForm) return;
-
-  if (formDeadline) {
-    const hariIni = new Date().toISOString().split('T')[0];
-    formDeadline.setAttribute('min', hariIni);
-  }
-
-  orderForm.addEventListener('submit', (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const name = document.getElementById('form-name').value.trim();
+    const name = document.getElementById('form-name').value;
     const service = document.getElementById('form-service').value;
     const level = document.getElementById('form-level').value;
     const pages = document.getElementById('form-pages').value;
     const deadline = document.getElementById('form-deadline').value;
-    const details = document.getElementById('form-details').value.trim();
+    const details = document.getElementById('form-details').value;
 
-    const destinationElement = document.querySelector('input[name="form-destination"]:checked');
-    const destination = destinationElement ? destinationElement.value : 'whatsapp';
+    // PERBAIKAN: Mengonversi tanggal deadline mentah menjadi format teks Indonesia yang rapi
+    const formattedDate = formatDateString(deadline);
 
-    if (!name || name.length < 2) {
-      alert('Mohon masukkan nama lengkap Anda dengan benar!');
-      return;
-    }
+    const orderData = {
+      name: name,
+      service: service,
+      level: level,
+      pages: pages,
+      rawDeadline: deadline, // Tambahan untuk kalkulasi harga deadline di payment.html
+      formattedDeadline: formattedDate, // Sekarang terkirim cantik (contoh: "Selasa, 16 Juni 2026")
+      details: details
+    };
 
-    if (!deadline) {
-      alert('Mohon tentukan tanggal deadline pengerjaan tugas!');
-      return;
-    }
-
-    const formattedDeadline = formatDateString(deadline);
-
-    const waMessage = `Halo SolusiJoki.id, saya ingin berkonsultasi untuk pemesanan jasa joki tugas:\n\n` +
-      `*Form Pemesanan:*\n` +
-      `• *Nama Lengkap:* ${name}\n` +
-      `• *Jenis Layanan:* ${service}\n` +
-      `• *Jenjang Pendidikan:* ${level}\n` +
-      `• *Jumlah Halaman:* ${pages} Halaman\n` +
-      `• *Deadline Pengerjaan:* ${formattedDeadline}\n\n` +
-      `*Detail & Deskripsi Tugas:*\n` +
-      `${details ? details : '_(Detail mendalam akan disampaikan langsung saat chat)_'}\n\n` +
-      `Mohon informasi mengenai estimasi harga resmi dan metode pembayarannya. Terima kasih!`;
-
-    const emailBody = `Halo SolusiJoki.id,\n\nSaya ingin berkonsultasi untuk pemesanan jasa joki tugas dengan detail berikut:\n\n` +
-      `Nama Lengkap: ${name}\n` +
-      `Jenis Layanan: ${service}\n` +
-      `Jenjang Pendidikan: ${level}\n` +
-      `Jumlah Halaman: ${pages} Halaman\n` +
-      `Deadline Pengerjaan: ${formattedDeadline}\n\n` +
-      `Detail & Deskripsi Tugas:\n` +
-      `${details ? details : '(Detail mendalam akan disampaikan saat kelanjutan email)'}\n\n` +
-      `Mohon informasi mengenai estimasi harga resmi beserta metode pembayarannya.\n\nTerima kasih.\n${name}`;
-
-    if (destination === 'whatsapp') {
-      const encodedText = encodeURIComponent(waMessage);
-      const whatsappUrl = `https://api.whatsapp.com/send?phone=${CONFIG.whatsappNumber}&text=${encodedText}`;
-      window.open(whatsappUrl, '_blank');
-    } else if (destination === 'email') {
-      const subject = encodeURIComponent(`Order Jasa Joki - ${name} (${service})`);
-      const encodedBody = encodeURIComponent(emailBody);
-      const mailtoUrl = `mailto:${CONFIG.emailTarget}?subject=${subject}&body=${encodedBody}`;
-      window.location.href = mailtoUrl;
-    }
-  });
-
-  const waContactBtns = document.querySelectorAll('.wa-contact-trigger');
-  waContactBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const genericMsg = 'Halo SolusiJoki.id, saya tertarik dengan layanan pengerjaan tugas akademik Anda. Bisa bantu saya?';
-      const encodedMsg = encodeURIComponent(genericMsg);
-
-      const mobileNav = document.getElementById('mobile-nav-drawer');
-      if (mobileNav && mobileNav.classList.contains('open')) {
-        mobileNav.classList.remove('open');
-        document.body.classList.remove('overflow-hidden');
-      }
-
-      window.open(`https://api.whatsapp.com/send?phone=${CONFIG.whatsappNumber}&text=${encodedMsg}`, '_blank');
-    });
+    sessionStorage.setItem('orderData', JSON.stringify(orderData));
+    window.location.href = 'payment.html';
   });
 }
 
+// Fungsi Formatter Tanggal Indonesia
 function formatDateString(dateString) {
   if (!dateString) return '';
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -262,7 +259,7 @@ function formatDateString(dateString) {
 }
 
 /**
- * 7. Kontrol Logika Buka-Tutup Akordion FAQ (Smooth Accordion)
+ * 7. Kontrol Logika Buka-Tutup Akordion FAQ
  */
 function initFaqAccordion() {
   const faqHeaders = document.querySelectorAll('.faq-header');
@@ -270,9 +267,9 @@ function initFaqAccordion() {
   faqHeaders.forEach(header => {
     header.addEventListener('click', () => {
       const content = header.nextElementSibling;
+      if (!content) return;
       const isCurrentlyActive = header.classList.contains('active');
 
-      // TUTUP SEMUA FAQ YANG SEDANG TERBUKA (Efek Akordion Tunggal)
       faqHeaders.forEach(otherHeader => {
         otherHeader.classList.remove('active');
         if (otherHeader.nextElementSibling) {
@@ -280,10 +277,8 @@ function initFaqAccordion() {
         }
       });
 
-      // JIKA YANG DIKLIK SEBELUMNYA TIDAK AKTIF, MAKA BUKA SEKARANG
       if (!isCurrentlyActive) {
         header.classList.add('active');
-        // Gunakan scrollHeight agar tinggi animasi beradaptasi otomatis sesuai teks
         content.style.maxHeight = content.scrollHeight + "px";
       }
     });
@@ -311,3 +306,81 @@ function initScrollAnimations() {
     animatedElements.forEach(el => el.classList.add('animated'));
   }
 }
+
+// =========================================================================
+// TALENT PORTFOLIO DATA GENERATOR (KHAS UNTUK HALAMAN TALENTS.HTML)
+// =========================================================================
+const TALENT_DATA = {
+  'talent-1': {
+    name: "Rian Hidayat, S.Kom.",
+    badge: "IT & Soshum Specialist",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    projects: [
+      "💻 Pembuatan Struktur Website Profile Organisasi Daerah berbasis Tailwind CSS (Mendapat Nilai Akhir A)",
+      "📝 Penulisan Esai Analisis Ancaman Malware dan Kebocoran Data Nasional Pada Sektor Publik (Lolos Jurnal Kampus)",
+      "📊 Resume Komparatif Kritis terhadap 5 Jurnal Internasional Bertopik Integrasi Big Data dalam Ekonomi Kreatif",
+      "📚 Penyusunan Berkas Laporan Tugas Akhir Struktur Data & Query Optimasi Basis Data Relasional (PostgreSQL)"
+    ]
+  },
+  'talent-2': {
+    name: "Siti Aminah, S.H.",
+    badge: "Hukum & Humaniora",
+    avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
+    projects: [
+      "⚖️ Makalah Hukum Agraria: Penyelesaian Alternatif Kasus Sengketa Kepemilikan Atas Tanah Adat (Nilai 98/100)",
+      "📄 Karya Tulis Analisis Yuridis Implementasi Undang-Undang Perlindungan Data Pribadi di Layanan E-Commerce",
+      "🏛️ Penyusunan Berkas Pendapat Hukum (Legal Memorandum) Terkait Sengketa Ingkar Janji Kontrak Dagang Dagang",
+      "👥 Esai Sosiologi Politik: Fenomena Pergeseran Budaya Musyawarah Menuju Media Sosial Pada Kelompok Mahasiswa"
+    ]
+  },
+  'talent-3': {
+    name: "Fajar Nugraha, M.Pd.",
+    badge: "Edukasi & Bahasa",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    projects: [
+      "📖 Resume Komprehensif Buku Filsafat Pendidikan Klasik & Modern Sejarah Perkembangan Global (Total 35 Halaman)",
+      "🇬🇧 Penerjemahan + Parafrase Akurat Karya Tulis Ilmiah Jurnal Internasional Kedokteran Berbahasa Inggris Kuno",
+      "📐 Penyusunan Dokumen Perangkat Pengajaran Rencana Pelaksanaan Pembelajaran (RPP) Berstandar Kurikulum Merdeka",
+      "🖊️ Pembuatan Draf Penelitian Tindakan Kelas (PTK) Terkait Efektivitas Media Audio Visual Terhadap Pemahaman Siswa"
+    ]
+  }
+};
+
+function openPortfolio(talentKey) {
+  const modal = document.getElementById('portfolio-modal');
+  const data = TALENT_DATA[talentKey];
+
+  if (!modal || !data) return;
+
+  document.getElementById('modal-name').textContent = data.name;
+  document.getElementById('modal-badge').textContent = data.badge;
+  document.getElementById('modal-avatar').innerHTML = `<img src="${data.avatar}" class="w-full h-full object-cover">`;
+
+  const listContainer = document.getElementById('modal-list');
+  listContainer.innerHTML = '';
+
+  data.projects.forEach(project => {
+    const li = document.createElement('li');
+    li.className = "flex gap-3 items-start p-3 bg-slate-50 dark:bg-slate-700/40 rounded-xl border border-slate-100 dark:border-slate-700/50 text-sm leading-relaxed text-slate-700 dark:text-slate-300";
+    li.textContent = project;
+    listContainer.appendChild(li);
+  });
+
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+function closePortfolio() {
+  const modal = document.getElementById('portfolio-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+}
+
+window.addEventListener('click', (e) => {
+  const modal = document.getElementById('portfolio-modal');
+  if (e.target === modal) {
+    closePortfolio();
+  }
+});
