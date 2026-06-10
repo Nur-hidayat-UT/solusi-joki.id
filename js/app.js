@@ -245,8 +245,51 @@ function initOrderForm() {
       details: details
     };
 
+<<<<<<< HEAD
     sessionStorage.setItem('orderData', JSON.stringify(orderData));
     window.location.href = 'payment.html';
+=======
+    if (!deadline) {
+      alert('Mohon tentukan tanggal deadline pengerjaan tugas!');
+      return;
+    }
+
+    const formattedDeadline = formatDateString(deadline);
+
+    // ✅ PERBAIKAN: Simpan data ke sessionStorage dan arahkan ke payment.html
+    const orderData = {
+      name: name,
+      service: service,
+      level: level,
+      pages: pages,
+      deadline: deadline,
+      formattedDeadline: formattedDeadline,
+      details: details,
+      destination: destination
+    };
+
+    // Simpan data ke sessionStorage
+    sessionStorage.setItem('orderData', JSON.stringify(orderData));
+
+    // Arahkan ke halaman payment
+    window.location.href = 'payment.html';
+  });
+
+  const waContactBtns = document.querySelectorAll('.wa-contact-trigger');
+  waContactBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const genericMsg = 'Halo SolusiJoki.id, saya tertarik dengan layanan pengerjaan tugas akademik Anda. Bisa bantu saya?';
+      const encodedMsg = encodeURIComponent(genericMsg);
+
+      const mobileNav = document.getElementById('mobile-nav-drawer');
+      if (mobileNav && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        document.body.classList.remove('overflow-hidden');
+      }
+
+      window.open(`https://api.whatsapp.com/send?phone=${CONFIG.whatsappNumber}&text=${encodedMsg}`, '_blank');
+    });
+>>>>>>> 1ef12f444cafa3e867701ce1f1fc475b24a9e212
   });
 }
 
