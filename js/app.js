@@ -328,36 +328,36 @@ function initScrollAnimations() {
 // =========================================================================
 const TALENT_DATA = {
   'talent-1': {
-    name: "Rian Hidayat, S.Kom.",
-    badge: "IT & Soshum Specialist",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    name: "Nur Hidayat",
+    badge: "IT & Desain Grafis",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
     projects: [
-      "💻 Pembuatan Struktur Website Profile Organisasi Daerah berbasis Tailwind CSS (Mendapat Nilai Akhir A)",
-      "📝 Penulisan Esai Analisis Ancaman Malware dan Kebocoran Data Nasional Pada Sektor Publik (Lolos Jurnal Kampus)",
-      "📊 Resume Komparatif Kritis terhadap 5 Jurnal Internasional Bertopik Integrasi Big Data dalam Ekonomi Kreatif",
-      "📚 Penyusunan Berkas Laporan Tugas Akhir Struktur Data & Query Optimasi Basis Data Relasional (PostgreSQL)"
+      "💻 Pengembangan Website Profil Perusahaan menggunakan Vibe Coding dengan AI (Tailwind CSS + JavaScript)",
+      "📊 Pembuatan Laporan Keuangan dan Presentasi Interaktif dengan Microsoft Excel & PowerPoint",
+      "🎨 Desain Brosur Promosi dan Konten Media Sosial menggunakan Canva dan GIMP (Mendapat Respons Positif)",
+      "📝 Penyusunan Dokumentasi Teknis dan Modul Pelatihan Office untuk Karyawan Baru"
     ]
   },
   'talent-2': {
-    name: "Siti Aminah, S.H.",
-    badge: "Hukum & Humaniora",
+    name: "Fatimah",
+    badge: "Administrasi & Desain",
     avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
     projects: [
-      "⚖️ Makalah Hukum Agraria: Penyelesaian Alternatif Kasus Sengketa Kepemilikan Atas Tanah Adat (Nilai 98/100)",
-      "📄 Karya Tulis Analisis Yuridis Implementasi Undang-Undang Perlindungan Data Pribadi di Layanan E-Commerce",
-      "🏛️ Penyusunan Berkas Pendapat Hukum (Legal Memorandum) Terkait Sengketa Ingkar Janji Kontrak Dagang Dagang",
-      "👥 Esai Sosiologi Politik: Fenomena Pergeseran Budaya Musyawarah Menuju Media Sosial Pada Kelompok Mahasiswa"
+      "📄 Penyusunan Laporan Tahunan Perusahaan Lengkap dengan Grafik dan Tabel menggunakan Microsoft Word & Excel",
+      "🎨 Desain Slide Presentasi dan Infografis Visual untuk Seminar Pendidikan Nasional",
+      "📊 Pembuatan Database Sederhana dan Analisis Data Menggunakan Microsoft Excel (VLOOKUP, Pivot Table)",
+      "📑 Penulisan Proposal dan Notulen Rapat Profesional dengan Format Standar Perusahaan"
     ]
   },
   'talent-3': {
-    name: "Fajar Nugraha, M.Pd.",
-    badge: "Edukasi & Bahasa",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    name: "Yani",
+    badge: "Desain Canva",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&auto=format&fit=crop&q=80",
     projects: [
-      "📖 Resume Komprehensif Buku Filsafat Pendidikan Klasik & Modern Sejarah Perkembangan Global (Total 35 Halaman)",
-      "🇬🇧 Penerjemahan + Parafrase Akurat Karya Tulis Ilmiah Jurnal Internasional Kedokteran Berbahasa Inggris Kuno",
-      "📐 Penyusunan Dokumen Perangkat Pengajaran Rencana Pelaksanaan Pembelajaran (RPP) Berstandar Kurikulum Merdeka",
-      "🖊️ Pembuatan Draf Penelitian Tindakan Kelas (PTK) Terkait Efektivitas Media Audio Visual Terhadap Pemahaman Siswa"
+      "🎨 Desain Konten Instagram Feed & Story untuk Brand Fashion Lokal menggunakan Canva (Meningkatkan Engagement 40%)",
+      "📊 Pembuatan Infografis Laporan Data Penjualan dan Presentasi Visual yang Menarik",
+      "🖼️ Desain Brosur, Flyer, dan Poster Event Kampus dengan Canva (Mendapat Juara 1 Lomba Desain)",
+      "📁 Pembuatan Template Presentasi dan Dokumen Branding Perusahaan menggunakan Canva"
     ]
   }
 };

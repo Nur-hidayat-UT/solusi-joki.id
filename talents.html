@@ -5,7 +5,14 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="description"
-        content="Daftar Tim Ahli dan Penjoki Profesional SolusiJoki.id - Lihat keahlian dan portofolio akademisi terbaik kami." />
+        content="Daftar Tim Ahli dan Penulis Profesional SolusiJoki.id - Lihat keahlian dan portofolio akademisi terbaik kami untuk pengerjaan tugas kuliah Anda." />
+    <meta name="keywords"
+        content="tim joki tugas, penulis makalah, ahli esai, joki tugas kuliah terpercaya, portofolio joki" />
+    <meta name="author" content="SolusiJoki.id" />
+    <meta property="og:title" content="Tim Ahli & Portofolio - SolusiJoki.id" />
+    <meta property="og:description"
+        content="Lihat daftar tim ahli akademisi kami yang siap membantu pengerjaan tugas kuliah Anda dengan kualitas tinggi." />
+    <meta property="og:type" content="website" />
     <title>Tim Ahli & Portofolio - SolusiJoki.id</title>
 
     <!-- Google Fonts: Plus Jakarta Sans -->
@@ -44,15 +51,10 @@
             }
         }
     </script>
-
-    <link rel="stylesheet" href="css/style.css" />
-</head>
-
-<body class="overflow-x-hidden antialiased transition-colors-all min-h-screen flex flex-col">
-
     <script>
-        // Inline script pengaman dark mode agar tidak kaget saat refresh halaman
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        // Prioritaskan mode terang sebagai default bawaan website
+        const savedTheme = localStorage.getItem('color-theme');
+        if (savedTheme === 'dark') {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
@@ -63,87 +65,232 @@
     <div id="navbar-placeholder" class="sticky top-0 z-50"></div>
 
     <main class="flex-grow py-16">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="text-center max-w-3xl mx-auto mb-16 scroll-animate">
                 <span
                     class="text-success-emerald font-semibold text-sm uppercase tracking-wider px-3 py-1 bg-success-emerald/10 rounded-full">Tim
                     Kreatif & Akademisi</span>
                 <h1
-                    class="text-3xl sm:text-4xl font-extrabold text-trust-navy dark:text-paper-white mt-3 tracking-tight">
-                    Pilih Talent Berdasarkan Keahlian Tugas Anda
+                    class="text-3xl sm:text-4xl font-extrabold text-trust-navy dark:text-paper-white mt-4 tracking-tight">
+                    Pilih Penulis Ahli Untuk Tugas Anda
                 </h1>
                 <p class="text-slate-gray dark:text-slate-400 mt-4 text-lg">
-                    Seluruh tim kami merupakan lulusan dan mahasiswa tingkat akhir berkompeten yang siap memberikan
-                    hasil pengerjaan kualitas terbaik, orisinal, dan lulus uji Turnitin.
+                    Seluruh tim kami merupakan lulusan terbaik dan mahasiswa tingkat akhir berkompeten yang siap memberikan
+                    hasil pengerjaan kualitas tinggi, orisinal, dan lolos uji Turnitin.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Talent Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
 
+                <!-- Talent 1 -->
                 <div
-                    class="glass-card ambient-shadow rounded-2xl p-6 flex flex-col items-center text-center transition-all duration-300">
-                    <div
-                        class="w-24 h-24 rounded-full overflow-hidden border-4 border-success-emerald/30 mb-4 shadow-inner">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
-                            alt="Rian Hidayat" class="w-full h-full object-cover">
+                    class="glass-card ambient-shadow rounded-3xl p-8 flex flex-col items-center text-center transition-all duration-300 group scroll-animate">
+                    <div class="relative mb-6">
+                        <div
+                            class="w-28 h-28 rounded-full overflow-hidden border-4 border-success-emerald/20 group-hover:border-success-emerald/50 transition-colors shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80"
+                                alt="Nur Hidayat" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-2 -right-2 bg-success-emerald text-white rounded-full p-1.5 shadow-lg">
+                            <span class="material-symbols-outlined text-[20px] fill-current">verified</span>
+                        </div>
                     </div>
                     <h3 class="text-xl font-bold text-trust-navy dark:text-paper-white">Nur Hidayat</h3>
                     <span
-                        class="text-sm text-success-emerald font-medium px-2.5 py-0.5 bg-success-emerald/10 rounded-full mt-1">IT
-                        & Soshum Specialist</span>
-                    <p class="text-sm text-slate-gray dark:text-slate-400 mt-3 flex-grow">
-                        Ahli dalam penulisan esai bidang teknologi informasi, pengerjaan koding web dasar (HTML/CSS/JS),
-                        serta resume jurnal ilmiah soshum.
+                        class="text-xs text-success-emerald font-bold px-3 py-1 bg-success-emerald/10 rounded-full mt-2 uppercase tracking-wide">IT
+                        & Desain Grafis</span>
+                    
+                    <div class="flex items-center gap-1 mt-3 mb-4 text-yellow-500">
+                        <span class="material-symbols-outlined text-[18px] fill-current">star</span>
+                        <span class="material-symbols-outlined text-[18px] fill-current">star</span>
+                        <span class="material-symbols-outlined text-[18px] fill-current">star</span>
+                        <span class="material-symbols-outlined text-[18px] fill-current">star</span>
+                        <span class="material-symbols-outlined text-[18px] fill-current">star</span>
+                        <span class="text-xs font-bold text-slate-gray dark:text-slate-400 ml-1">5.0</span>
+                    </div>
+
+                    <p class="text-sm text-slate-gray dark:text-slate-400 leading-relaxed mb-6 flex-grow">
+                        Ahli dalam pengembangan IT, Vibe Coding, Microsoft Office (Word, Excel, PowerPoint), serta desain grafis menggunakan Canva dan GIMP.
                     </p>
-                    <button onclick="openPortfolio('talent-1')"
-                        class="mt-5 w-full bg-trust-navy dark:bg-slate-800 text-white dark:text-slate-200 hover:bg-success-emerald dark:hover:bg-success-emerald py-2.5 px-4 rounded-xl font-medium text-sm transition-all shadow-sm flex items-center justify-center gap-2">
-                        <span class="material-symbols-outlined text-[18px]">visibility</span> Lihat Portofolio
-                    </button>
+                    <div class="w-full flex gap-3">
+                        <button onclick="openPortfolio('talent-1')"
+                            class="flex-1 bg-trust-navy dark:bg-slate-800 text-white dark:text-slate-200 hover:bg-slate-800 dark:hover:bg-slate-700 py-3 px-4 rounded-xl font-bold text-sm transition-all shadow-sm flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-[18px]">visibility</span> Portofolio
+                        </button>
+                        <a href="index.html#order-section"
+                            class="p-3 bg-success-emerald hover:bg-accent-emerald-dark text-white rounded-xl transition-all shadow-sm flex items-center justify-center">
+                            <span class="material-symbols-outlined">chat_bubble</span>
+                        </a>
+                    </div>
                 </div>
 
+                <!-- Talent 2 -->
                 <div
-                    class="glass-card ambient-shadow rounded-2xl p-6 flex flex-col items-center text-center transition-all duration-300">
-                    <div
-                        class="w-24 h-24 rounded-full overflow-hidden border-4 border-success-emerald/30 mb-4 shadow-inner">
-                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80"
-                            alt="Siti Aminah" class="w-full h-full object-cover">
+                    class="glass-card ambient-shadow rounded-3xl p-8 flex flex-col items-center text-center transition-all duration-300 group scroll-animate">
+                    <div class="relative mb-6">
+                        <div
+                            class="w-28 h-28 rounded-full overflow-hidden border-4 border-success-emerald/20 group-hover:border-success-emerald/50 transition-colors shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&auto=format&fit=crop&q=80"
+                                alt="Fatimah" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-2 -right-2 bg-success-emerald text-white rounded-full p-1.5 shadow-lg">
+                            <span class="material-symbols-outlined text-[20px] fill-current">verified</span>
+                        </div>
                     </div>
                     <h3 class="text-xl font-bold text-trust-navy dark:text-paper-white">Fatimah</h3>
                     <span
-                        class="text-sm text-success-emerald font-medium px-2.5 py-0.5 bg-success-emerald/10 rounded-full mt-1">Word
-                        Spesialist</span>
-                    <p class="text-sm text-slate-gray dark:text-slate-400 mt-3 flex-grow">
-                        Spesialis pembuatan makalah hukum tata negara, hukum perdata/agraria, analisis studi kasus
-                        hukum, serta penulisan esai kritis sosiologi.
+                        class="text-xs text-success-emerald font-bold px-3 py-1 bg-success-emerald/10 rounded-full mt-2 uppercase tracking-wide">Administrasi & Desain</span>
+                    
+                    <div class="flex items-center gap-1 mt-3 mb-4 text-yellow-500">
+                        <span class="material-symbols-outlined text-[18px] fill-current">star</span>
+                        <span class="material-symbols-outlined text-[18px] fill-current">star</span>
+                        <span class="material-symbols-outlined text-[18px] fill-current">star</span>
+                        <span class="material-symbols-outlined text-[18px] fill-current">star</span>
+                        <span class="material-symbols-outlined text-[18px] fill-current">star</span>
+                        <span class="text-xs font-bold text-slate-gray dark:text-slate-400 ml-1">4.9</span>
+                    </div>
+
+                    <p class="text-sm text-slate-gray dark:text-slate-400 leading-relaxed mb-6 flex-grow">
+                        Spesialis dalam pengelolaan dokumen Microsoft Office (Word, Excel, PowerPoint) serta desain grafis untuk kebutuhan presentasi dan publikasi.
                     </p>
-                    <button onclick="openPortfolio('talent-2')"
-                        class="mt-5 w-full bg-trust-navy dark:bg-slate-800 text-white dark:text-slate-200 hover:bg-success-emerald dark:hover:bg-success-emerald py-2.5 px-4 rounded-xl font-medium text-sm transition-all shadow-sm flex items-center justify-center gap-2">
-                        <span class="material-symbols-outlined text-[18px]">visibility</span> Lihat Portofolio
-                    </button>
+                    <div class="w-full flex gap-3">
+                        <button onclick="openPortfolio('talent-2')"
+                            class="flex-1 bg-trust-navy dark:bg-slate-800 text-white dark:text-slate-200 hover:bg-slate-800 dark:hover:bg-slate-700 py-3 px-4 rounded-xl font-bold text-sm transition-all shadow-sm flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-[18px]">visibility</span> Portofolio
+                        </button>
+                        <a href="index.html#order-section"
+                            class="p-3 bg-success-emerald hover:bg-accent-emerald-dark text-white rounded-xl transition-all shadow-sm flex items-center justify-center">
+                            <span class="material-symbols-outlined">chat_bubble</span>
+                        </a>
+                    </div>
                 </div>
 
+                <!-- Talent 3 -->
                 <div
-                    class="glass-card ambient-shadow rounded-2xl p-6 flex flex-col items-center text-center transition-all duration-300">
-                    <div
-                        class="w-24 h-24 rounded-full overflow-hidden border-4 border-success-emerald/30 mb-4 shadow-inner">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
-                            alt="Fajar Nugraha" class="w-full h-full object-cover">
+                    class="glass-card ambient-shadow rounded-3xl p-8 flex flex-col items-center text-center transition-all duration-300 group scroll-animate">
+                    <div class="relative mb-6">
+                        <div
+                            class="w-28 h-28 rounded-full overflow-hidden border-4 border-success-emerald/20 group-hover:border-success-emerald/50 transition-colors shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&auto=format&fit=crop&q=80"
+                                alt="Yani" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-2 -right-2 bg-success-emerald text-white rounded-full p-1.5 shadow-lg">
+                            <span class="material-symbols-outlined text-[20px] fill-current">verified</span>
+                        </div>
                     </div>
                     <h3 class="text-xl font-bold text-trust-navy dark:text-paper-white">Yani</h3>
                     <span
-                        class="text-sm text-success-emerald font-medium px-2.5 py-0.5 bg-success-emerald/10 rounded-full mt-1">Desine
-                        spesialist</span>
-                    <p class="text-sm text-slate-gray dark:text-slate-400 mt-3 flex-grow">
-                        Sangat berpengalaman dalam merangkum (resume) buku tebal, menyusun modul pembelajaran/RPP,
-                        makalah keguruan, dan translate abstrak jurnal Inggris-Indonesia.
+                        class="text-xs text-success-emerald font-bold px-3 py-1 bg-success-emerald/10 rounded-full mt-2 uppercase tracking-wide">Desain Canva</span>
+                    
+                    <div class="flex items-center gap-1 mt-3 mb-4 text-yellow-500">
+                        <span class="material-symbols-outlined text-[18px] fill-current">star</span>
+                        <span class="material-symbols-outlined text-[18px] fill-current">star</span>
+                        <span class="material-symbols-outlined text-[18px] fill-current">star</span>
+                        <span class="material-symbols-outlined text-[18px] fill-current">star</span>
+                        <span class="material-symbols-outlined text-[18px] fill-current">star_half</span>
+                        <span class="text-xs font-bold text-slate-gray dark:text-slate-400 ml-1">4.8</span>
+                    </div>
+
+                    <p class="text-sm text-slate-gray dark:text-slate-400 leading-relaxed mb-6 flex-grow">
+                        Spesialis desain grafis menggunakan Canva untuk pembuatan presentasi, materi promosi, infografis, dan konten visual kreatif lainnya.
                     </p>
-                    <button onclick="openPortfolio('talent-3')"
-                        class="mt-5 w-full bg-trust-navy dark:bg-slate-800 text-white dark:text-slate-200 hover:bg-success-emerald dark:hover:bg-success-emerald py-2.5 px-4 rounded-xl font-medium text-sm transition-all shadow-sm flex items-center justify-center gap-2">
-                        <span class="material-symbols-outlined text-[18px]">visibility</span> Lihat Portofolio
-                    </button>
+                    <div class="w-full flex gap-3">
+                        <button onclick="openPortfolio('talent-3')"
+                            class="flex-1 bg-trust-navy dark:bg-slate-800 text-white dark:text-slate-200 hover:bg-slate-800 dark:hover:bg-slate-700 py-3 px-4 rounded-xl font-bold text-sm transition-all shadow-sm flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-[18px]">visibility</span> Portofolio
+                        </button>
+                        <a href="index.html#order-section"
+                            class="p-3 bg-success-emerald hover:bg-accent-emerald-dark text-white rounded-xl transition-all shadow-sm flex items-center justify-center">
+                            <span class="material-symbols-outlined">chat_bubble</span>
+                        </a>
+                    </div>
                 </div>
 
+            </div>
+
+            <!-- Why Choose Our Team Section -->
+            <div class="mb-20 scroll-animate">
+                <div class="bg-trust-navy dark:bg-slate-900/50 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-success-emerald/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+                    <div class="absolute bottom-0 left-0 w-64 h-64 bg-success-emerald/5 rounded-full -ml-32 -mb-32 blur-3xl"></div>
+                    
+                    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <span class="text-success-emerald font-bold text-sm uppercase tracking-widest">Kualitas Terjamin</span>
+                            <h2 class="text-3xl font-extrabold mt-4 mb-6 leading-tight">Mengapa Memilih Tim Penulis Kami?</h2>
+                            <p class="text-slate-300 mb-8 leading-relaxed">
+                                Kami bukan sekadar penjoki tugas biasa. Tim kami terdiri dari individu yang memiliki integritas akademik tinggi dan keahlian spesifik di bidangnya.
+                            </p>
+                            
+                            <div class="space-y-4">
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-success-emerald/20 flex items-center justify-center shrink-0">
+                                        <span class="material-symbols-outlined text-success-emerald">school</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Lulusan & Mahasiswa PTN/PTS Ternama</h4>
+                                        <p class="text-sm text-slate-400">Tim kami berasal dari kampus top dengan IPK di atas 3.5.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-success-emerald/20 flex items-center justify-center shrink-0">
+                                        <span class="material-symbols-outlined text-success-emerald">shield_check</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Bebas Plagiasi & Turnitin</h4>
+                                        <p class="text-sm text-slate-400">Garansi hasil pengerjaan 100% orisinal dengan bukti cek Turnitin.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-success-emerald/20 flex items-center justify-center shrink-0">
+                                        <span class="material-symbols-outlined text-success-emerald">update</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Disiplin Waktu (On-Time)</h4>
+                                        <p class="text-sm text-slate-400">Pengerjaan cepat tanpa mengurangi kualitas hasil tugas Anda.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white/5 border border-white/10 p-6 rounded-2xl text-center">
+                                <h3 class="text-3xl font-extrabold text-success-emerald">50+</h3>
+                                <p class="text-xs text-slate-400 uppercase mt-2 tracking-widest">Tim Penulis</p>
+                            </div>
+                            <div class="bg-white/5 border border-white/10 p-6 rounded-2xl text-center">
+                                <h3 class="text-3xl font-extrabold text-success-emerald">1.5k+</h3>
+                                <p class="text-xs text-slate-400 uppercase mt-2 tracking-widest">Tugas Selesai</p>
+                            </div>
+                            <div class="bg-white/5 border border-white/10 p-6 rounded-2xl text-center">
+                                <h3 class="text-3xl font-extrabold text-success-emerald">98%</h3>
+                                <p class="text-xs text-slate-400 uppercase mt-2 tracking-widest">Puas (Rating A)</p>
+                            </div>
+                            <div class="bg-white/5 border border-white/10 p-6 rounded-2xl text-center">
+                                <h3 class="text-3xl font-extrabold text-success-emerald">24/7</h3>
+                                <p class="text-xs text-slate-400 uppercase mt-2 tracking-widest">Respon Cepat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom CTA Section -->
+            <div class="text-center scroll-animate">
+                <h2 class="text-3xl font-extrabold text-trust-navy dark:text-paper-white mb-6">Siap Untuk Mendapatkan Hasil Terbaik?</h2>
+                <p class="text-slate-gray dark:text-slate-400 max-w-xl mx-auto mb-10 leading-relaxed">
+                    Konsultasikan tugas Anda sekarang dengan tim kami dan dapatkan estimasi harga yang transparan.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="index.html#order-section" class="bg-success-emerald hover:bg-accent-emerald-dark text-white font-bold px-8 py-4 rounded-2xl transition-all shadow-lg shadow-success-emerald/20 flex items-center justify-center gap-2">
+                        Pesan Sekarang <span class="material-symbols-outlined">arrow_forward</span>
+                    </a>
+                    <a href="index.html#kalkulator-section" class="bg-trust-navy dark:bg-slate-800 text-white font-bold px-8 py-4 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-2">
+                        Hitung Biaya <span class="material-symbols-outlined">calculate</span>
+                    </a>
+                </div>
             </div>
         </div>
     </main>
